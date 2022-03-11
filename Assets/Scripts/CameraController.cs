@@ -28,6 +28,8 @@ public class CameraController : MonoBehaviour
     // camera zoom related
     public Transform Obstruction;
     public float zoomSpeed = 0.1f;
+    public float defaultDistance;
+    public float minDistance = 1.0f;
 
     // Start is called before the first frame update
     void Start() {
@@ -35,9 +37,12 @@ public class CameraController : MonoBehaviour
         this.cameraOffset = this.transform.position - PlayerTransform.position;
         // record initial camera rotation angle
         this.center = transform.rotation;
-        // set default obstruction to palyer
+        // set default obstruction
         Obstruction = PlayerTransform;
+        // change player transform to focus point child element (if change directly in unity there will be bugs)
         PlayerTransform = PlayerTransform.Find("Focus");
+        // calculate default distance from camera to player
+        defaultDistance = Vector3.Distance(PlayerTransform.position, this.transform.position);
     }
 
     // LateUpdate is called after Update methods
@@ -98,38 +103,40 @@ public class CameraController : MonoBehaviour
 
     public void viewObstructed() {
         RaycastHit hit;
-        if (Obstruction.gameObject.tag != "Player") {
-            //Obstruction.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
-        }
+        // set obstructing object back to normal (need to find the right render or this won't work) (may not need at all)
+        // if (Obstruction.gameObject.tag != "Player") {
+        //    Obstruction.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+        // }
 
-        if (Physics.Raycast(PlayerTransform.position, this.transform.position - PlayerTransform.position, out hit, 6.35f)) {
+        if (Physics.Raycast(PlayerTransform.position, this.transform.position - PlayerTransform.position, out hit, defaultDistance)) {
             if (hit.collider.gameObject.tag != "Player") {
                 Obstruction = hit.transform;
-                //Obstruction.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
+                // set obstructing object to transparent (need to find the right render or this won't work) (may not need at all)
+                // Obstruction.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
                 
-                if (Vector3.Distance(this.transform.position, PlayerTransform.position) > 1.0f) {
+                if (Vector3.Distance(this.transform.position, PlayerTransform.position) > minDistance) {
+                // calculate direction and distance of zooming in
                     Vector3 direction = cameraOffset.normalized;
                     float distance = Vector3.Distance(PlayerTransform.position, this.transform.position) - hit.distance;
                     Debug.Log("Camera to obstruction: " + hit.distance + ", Camera to player: " + Vector3.Distance(this.transform.position, PlayerTransform.position) + ", Move distance: " + distance);
-                
-                    //this.transform.Translate(direction * distance);
                     
+                    // zoom in
                     transform.position += transform.forward * distance;
-                    this.transform.LookAt(PlayerTransform.position);
                 }
             }
         } else {
-            Debug.Log("Camera to player: " + Vector3.Distance(this.transform.position, PlayerTransform.position));
-            if (Obstruction.gameObject.tag != "Player") {
-                //Obstruction.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
-            }
+            // set obstructing object back to normal (need to find the right render or this won't work) (may not need at all)
+            // if (Obstruction.gameObject.tag != "Player") {
+            //     Obstruction.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+            // }
             
-            if (Vector3.Distance(this.transform.position, PlayerTransform.position) < 6.35f) {
+            if (Vector3.Distance(this.transform.position, PlayerTransform.position) < defaultDistance) {
+                // calculate direction and distance of zooming out
                 Vector3 direction = cameraOffset.normalized;
                 float distance = Vector3.Distance(PlayerTransform.position, this.transform.position) - hit.distance;
-                //this.transform.Translate(direction * distance * zoomSpeed * Time.deltaTime);
+
+                // zoom out
                 transform.position -= transform.forward * distance* zoomSpeed;
-                this.transform.LookAt(PlayerTransform.position);
             }
         }
     }
