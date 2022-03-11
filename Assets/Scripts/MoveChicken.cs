@@ -124,7 +124,6 @@ public class MoveChicken : MonoBehaviour
 
           // move 135 degrees right (press "S" + "D")
           } else if (Input.GetKey("s") && Input.GetKey("d")) {
-              Debug.Log("135 right!!!!!");
               userRotation[1] = cameraRotation[1];
               userRotation += new Vector3(0, 135, 0);
               heading = ChickenTransform.forward;
@@ -132,7 +131,6 @@ public class MoveChicken : MonoBehaviour
 
           // move 135 degrees left (press "S" + "A")
           } else if (Input.GetKey("s") && Input.GetKey("a")) {
-              Debug.Log("135 left!!!!!");
               userRotation[1] = cameraRotation[1];
               userRotation += new Vector3(0, -135, 0);
               heading = ChickenTransform.forward;
