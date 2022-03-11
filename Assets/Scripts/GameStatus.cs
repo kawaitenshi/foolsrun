@@ -41,6 +41,7 @@ public class GameStatus : MonoBehaviour
         totalTime = timeLeft;
 
         Time.timeScale = 1.0f;
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
@@ -95,6 +96,7 @@ public class GameStatus : MonoBehaviour
 
     public void PauseGame(string type) {
         Time.timeScale = 0.0f;
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
         if (type == "pause") {
@@ -111,6 +113,7 @@ public class GameStatus : MonoBehaviour
 
     public void ResumeGame() {
         Time.timeScale = 1.0f;
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         gameStatText.text = "";
         gameOperText.text = "";
@@ -118,6 +121,7 @@ public class GameStatus : MonoBehaviour
 
     public void RestartGame() {
         Time.timeScale = 1.0f;
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         winStat = false;
         gameStatText.text = "";
