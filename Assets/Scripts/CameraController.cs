@@ -15,15 +15,15 @@ public class CameraController : MonoBehaviour
     public float smoothFactor = 0.5f;
 
     // multiplier for camera rotation
-    public float rotateSpeedH = 3.0f;
-    public float rotateSpeedV = 3.0f;
+    public float rotateSpeedH = 2.0f;
+    public float rotateSpeedV = 2.0f;
 
     // initial camera rotation angle
     public Quaternion center;
 
     // camera rotaion angle limit
-    private float minAngle = -45f;
-    private float maxAngle = 45f;
+    private float minAngle = 20.0f;
+    private float maxAngle = 160.0f;
 
     // camera zoom related
     public Transform Obstruction;
@@ -76,16 +76,28 @@ public class CameraController : MonoBehaviour
 
             // perform vertical rotation on Z axis within limit (bugs in limit need to be fixed)
             Quaternion tempZ = transform.rotation * cameraTurnAngleZ;
-            //Debug.Log(Quaternion.Angle(this.center, tempZ));
-            //if (Quaternion.Angle(this.center, tempZ) < this.maxAngle) {
-                this.cameraOffset = cameraTurnAngleZ * this.cameraOffset;
-            //}
+            Debug.Log(Vector3.Angle(this.transform.forward, Vector3.up));
+            if (rotateV > 0) {
+                if (Vector3.Angle(this.transform.forward, Vector3.up) < this.maxAngle) {
+                    this.cameraOffset = cameraTurnAngleZ * this.cameraOffset;
+                }
+            } else if (rotateV < 0) {
+                if (Vector3.Angle(this.transform.forward, Vector3.up) > this.minAngle) {
+                    this.cameraOffset = cameraTurnAngleZ * this.cameraOffset;
+                }
+            }
         
             // perform vertical rotation on X axis within limit (bugs in limit need to be fixed)
             Quaternion tempX = transform.rotation * cameraTurnAngleX;
-            //if (Quaternion.Angle(this.center, tempX) < this.maxAngle) {
-                this.cameraOffset = cameraTurnAngleX * this.cameraOffset;
-            //}
+            if (rotateV > 0) {
+                if (Vector3.Angle(this.transform.forward, Vector3.up) < this.maxAngle) {
+                    this.cameraOffset = cameraTurnAngleX * this.cameraOffset;
+                }
+            } else if (rotateV < 0) {
+                if (Vector3.Angle(this.transform.forward, Vector3.up) > this.minAngle) {
+                    this.cameraOffset = cameraTurnAngleX * this.cameraOffset;
+                }
+            }
 
             // perform horizontal rotation
             this.cameraOffset = cameraTurnAngleY * this.cameraOffset;
@@ -107,7 +119,8 @@ public class CameraController : MonoBehaviour
         // if (Obstruction.gameObject.tag != "Player") {
         //    Obstruction.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
         // }
-
+        
+        // there's some obstruction between player and camera
         if (Physics.Raycast(PlayerTransform.position, this.transform.position - PlayerTransform.position, out hit, defaultDistance)) {
             if (hit.collider.gameObject.tag != "Player") {
                 Obstruction = hit.transform;
@@ -115,15 +128,16 @@ public class CameraController : MonoBehaviour
                 // Obstruction.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
                 
                 if (Vector3.Distance(this.transform.position, PlayerTransform.position) > minDistance) {
-                // calculate direction and distance of zooming in
+                    // calculate direction and distance of zooming in
                     Vector3 direction = cameraOffset.normalized;
                     float distance = Vector3.Distance(PlayerTransform.position, this.transform.position) - hit.distance;
-                    Debug.Log("Camera to obstruction: " + hit.distance + ", Camera to player: " + Vector3.Distance(this.transform.position, PlayerTransform.position) + ", Move distance: " + distance);
                     
                     // zoom in
                     transform.position += transform.forward * distance;
                 }
             }
+        
+        // there's no obstruction between player and camera
         } else {
             // set obstructing object back to normal (need to find the right render or this won't work) (may not need at all)
             // if (Obstruction.gameObject.tag != "Player") {
@@ -136,7 +150,7 @@ public class CameraController : MonoBehaviour
                 float distance = Vector3.Distance(PlayerTransform.position, this.transform.position) - hit.distance;
 
                 // zoom out
-                transform.position -= transform.forward * distance* zoomSpeed;
+                transform.position -= transform.forward * distance;
             }
         }
     }
