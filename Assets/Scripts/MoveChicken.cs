@@ -31,6 +31,7 @@ public class MoveChicken : MonoBehaviour
     private Transform ChickenTransform;
 
     public AudioClip chicken_jump_sound;
+    public AudioClip chickenObs;
 
     // animation related
     Animator Animator;
@@ -155,9 +156,9 @@ public class MoveChicken : MonoBehaviour
 
         // only able to jump if you are on the ground
         if (isGrounded && userJumped && !hasFallen) {
+            GetComponent<AudioSource>().clip = chicken_jump_sound;
+            GetComponent<AudioSource>().Play();
             ChickenRigidbody.velocity = Vector3.up * jumpScale;
-             GetComponent<AudioSource>().clip = chicken_jump_sound;
-             GetComponent<AudioSource>().Play();
         }
     }
 
@@ -182,6 +183,8 @@ public class MoveChicken : MonoBehaviour
             print("chicken collided with obstacle");
             hasFallen = true;
             print("Fallen set to true");
+            GetComponent<AudioSource>().clip = chickenObs;
+            GetComponent<AudioSource>().Play();
             StartCoroutine(Slowed());
         }
     }

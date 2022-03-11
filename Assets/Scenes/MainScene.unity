@@ -6042,7 +6042,7 @@ PrefabInstance:
     - target: {fileID: 6380341222349962012, guid: d8c24dd766f1f454a89375fedac60a9e, type: 3}
       propertyPath: gem_collect
       value: 
-      objectReference: {fileID: 8300000, guid: c947611651954e94389a3019e555d790, type: 3}
+      objectReference: {fileID: 8300000, guid: 9451216ea166f8c44a3e7fa8ff7e9248, type: 3}
     - target: {fileID: 6380341222349962012, guid: d8c24dd766f1f454a89375fedac60a9e, type: 3}
       propertyPath: chickensquawk
       value: 
@@ -6050,7 +6050,7 @@ PrefabInstance:
     - target: {fileID: 6380341222349962012, guid: d8c24dd766f1f454a89375fedac60a9e, type: 3}
       propertyPath: chicken_squawk
       value: 
-      objectReference: {fileID: 8300000, guid: add3e3b2f65fdc24daf4e1037ca55fdb, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 7074349349627482795, guid: d8c24dd766f1f454a89375fedac60a9e, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -6107,6 +6107,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7074349349627482804, guid: d8c24dd766f1f454a89375fedac60a9e, type: 3}
+      propertyPath: humanObs
+      value: 
+      objectReference: {fileID: 8300000, guid: a0d9020e7c5075949815d9bea85aae94, type: 3}
+    - target: {fileID: 7074349349627482804, guid: d8c24dd766f1f454a89375fedac60a9e, type: 3}
+      propertyPath: humanJump
+      value: 
+      objectReference: {fileID: 8300000, guid: 5c66a193800fe4046ba18d745923ae45, type: 3}
     - target: {fileID: 7074349349627482804, guid: d8c24dd766f1f454a89375fedac60a9e, type: 3}
       propertyPath: MainCamera
       value: 
@@ -8278,10 +8286,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca24eb9ffa8912c4bbdb605d0d20299e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clipOne: {fileID: 8300000, guid: 3d65dffcd37e36a42ae90a95134de783, type: 3}
-  clipTwo: {fileID: 8300000, guid: e4e4976adc92e4243b8203b259b989aa, type: 3}
+  clipOne: {fileID: 8300000, guid: 661e5febd7fe8354c9643e83abb6940d, type: 3}
+  clipTwo: {fileID: 8300000, guid: 8b7e7c19e61fe7b4d828387ca33ced29, type: 3}
   clipThree: {fileID: 8300000, guid: 805abb80da363fd4ab03d992cf2eb471, type: 3}
-  clipFour: {fileID: 8300000, guid: 178e2de411fc3bd488a0a841e2f2a51e, type: 3}
+  clipFour: {fileID: 8300000, guid: 6182969eaea7b7442a0dd3e8a6b7e513, type: 3}
 --- !u!1 &313784796
 GameObject:
   m_ObjectHideFlags: 0
@@ -49546,6 +49554,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31c58eef20609f245bfded0650fa12ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  humanObs: {fileID: 0}
+  humanJump: {fileID: 0}
   MainCamera: {fileID: 0}
   CameraTransform: {fileID: 0}
   PlatformLayerMask:
@@ -63135,7 +63145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09e2db113b951704693efc483aa0b7b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  short_time_left: {fileID: 8300000, guid: 2825c4ebd27bc604db9839e61fafb2e6, type: 3}
+  short_time_left: {fileID: 8300000, guid: 7b4c821e16f2786408be567a99a2b60c, type: 3}
   timeRemainingObj: {fileID: 522015912}
   gameStatObj: {fileID: 206288104}
   gameOperObj: {fileID: 151892954}
@@ -63169,7 +63179,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3d45b7db67c621e40ba0e98db7dad780, type: 3}
+  m_audioClip: {fileID: 8300000, guid: acf20d8085f596648a07b94f01b9ed6a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -74393,7 +74403,7 @@ PrefabInstance:
     - target: {fileID: 592348661947165723, guid: d8350b694559f3b4bb5d9af47b56c43e, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: b21d74098f8b8554787982dc9a6273b6, type: 3}
+      objectReference: {fileID: 8300000, guid: 3cc78a1ed6807a94eb178d692e20ad14, type: 3}
     - target: {fileID: 2831215336790764572, guid: d8350b694559f3b4bb5d9af47b56c43e, type: 3}
       propertyPath: camera
       value: 
@@ -74425,7 +74435,7 @@ PrefabInstance:
     - target: {fileID: 2831215336790764572, guid: d8350b694559f3b4bb5d9af47b56c43e, type: 3}
       propertyPath: gem_collect
       value: 
-      objectReference: {fileID: 8300000, guid: c947611651954e94389a3019e555d790, type: 3}
+      objectReference: {fileID: 8300000, guid: 9451216ea166f8c44a3e7fa8ff7e9248, type: 3}
     - target: {fileID: 2831215336790764572, guid: d8350b694559f3b4bb5d9af47b56c43e, type: 3}
       propertyPath: chickensquawk
       value: 
@@ -74433,7 +74443,7 @@ PrefabInstance:
     - target: {fileID: 2831215336790764572, guid: d8350b694559f3b4bb5d9af47b56c43e, type: 3}
       propertyPath: chicken_squawk
       value: 
-      objectReference: {fileID: 8300000, guid: b21d74098f8b8554787982dc9a6273b6, type: 3}
+      objectReference: {fileID: 8300000, guid: 3cc78a1ed6807a94eb178d692e20ad14, type: 3}
     - target: {fileID: 3886333034428638136, guid: d8350b694559f3b4bb5d9af47b56c43e, type: 3}
       propertyPath: m_Avatar
       value: 
@@ -74451,9 +74461,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 66241055}
     - target: {fileID: 5253050476075507627, guid: d8350b694559f3b4bb5d9af47b56c43e, type: 3}
+      propertyPath: chickenObs
+      value: 
+      objectReference: {fileID: 8300000, guid: 4022b9510ed76c34e9978221e1d60b4b, type: 3}
+    - target: {fileID: 5253050476075507627, guid: d8350b694559f3b4bb5d9af47b56c43e, type: 3}
       propertyPath: chicken_jump_sound
       value: 
-      objectReference: {fileID: 8300000, guid: 2d681db7a8e90b648b924ad351a3a111, type: 3}
+      objectReference: {fileID: 8300000, guid: 9e270fd79fa84944c8e8fe6a95e116a3, type: 3}
     - target: {fileID: 8448564011576739926, guid: d8350b694559f3b4bb5d9af47b56c43e, type: 3}
       propertyPath: m_RootOrder
       value: 4
