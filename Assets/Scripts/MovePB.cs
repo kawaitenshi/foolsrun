@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class MovePB : MonoBehaviour
 {
+    public AudioClip humanObs;
+    public AudioClip humanJump;
+
     // user inputs
     private float wsInput;
     private float adInput;
@@ -158,6 +162,8 @@ public class MovePB : MonoBehaviour
 
         // only able to jump if you are on the ground
         if (isGrounded && userJumped && !hasFallen) {
+            GetComponent<AudioSource>().clip = humanJump;
+            GetComponent<AudioSource>().Play();
             HumanRigidbody.velocity = Vector3.up * jumpScale;
         }
     }
@@ -208,6 +214,8 @@ public class MovePB : MonoBehaviour
     }
 
     public IEnumerator Slowed() {
+        GetComponent<AudioSource>().clip = humanObs;
+        GetComponent<AudioSource>().Play();
         print("Human will slow");
         moveScale = 0.1f;
         print("Human slowed");
