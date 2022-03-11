@@ -125,7 +125,9 @@ public class CameraController : MonoBehaviour
                     
                     // zoom in
                     this.transform.position += this.transform.forward * distance;
-                    transform.position = Vector3.Lerp(transform.position, transform.position + transform.forward * distance, zoomSpeed);
+                    
+                    // smoot camera zooming (somehow not working, need further debugging)
+                    // this.transform.position = Vector3.Lerp(this.transform.position, this.transform.position + this.transform.forward * distance, zoomSpeed);
                 }
             }
         
@@ -143,7 +145,9 @@ public class CameraController : MonoBehaviour
 
                 // zoom out
                 this.transform.position -= this.transform.forward * distance;
-                //transform.position = Vector3.Lerp(transform.position, transform.position + transform.forward * distance, zoomSpeed);
+                
+                // smoot camera zooming (somehow not working, need further debugging)
+                // this.transform.position = Vector3.Lerp(this.transform.position, this.transform.position + this.transform.forward * distance, zoomSpeed);
             }
         }
     }
