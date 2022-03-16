@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -11,6 +12,7 @@ public class GameStatus : MonoBehaviour
     private bool played_stl = false;
 
     public GameObject timeRemainingObj;
+    public GameObject timeRemainingClockContents;
     public GameObject gameStatObj;
     public GameObject gameOperObj;
     public GameObject playerObj;
@@ -19,6 +21,7 @@ public class GameStatus : MonoBehaviour
     private Text timeRemainingText;
     private Text gameStatText;
     private Text gameOperText;
+    public TextMeshProUGUI timeRemainingClockContentsText;
 
     public float timeLeft = 90;
     public int requiredScoreToWin = 6;
@@ -34,9 +37,11 @@ public class GameStatus : MonoBehaviour
         timeRemainingText = timeRemainingObj.GetComponent<Text>();
         gameStatText = gameStatObj.GetComponent<Text>();
         gameOperText = gameOperObj.GetComponent<Text>();
+        timeRemainingClockContentsText = timeRemainingClockContents.GetComponent<TextMeshProUGUI>();
         timeRemainingText.text = "Time Remaining: " + timeLeft;
         gameStatText.text = "";
         gameOperText.text = "";
+        timeRemainingClockContentsText.text = formatTime(timeLeft);
         slider.value = 1f;
         totalTime = timeLeft;
 
@@ -89,9 +94,21 @@ public class GameStatus : MonoBehaviour
             }
         }
     }
-    
+
+    /**
+     * Accepts the time left in seconds and returns a formatted time string.
+     */
+    string formatTime(float secondsLeft)
+    {
+        if (secondsLeft <= 0)
+        {
+            return "0:00";
+        }
+        return $"{(int) (secondsLeft / 60)}:{(int) (secondsLeft % 60)}";
+    }
     void DisplayTime(float time) {
         slider.value = timeLeft / totalTime;
+        timeRemainingClockContentsText.text = formatTime(timeLeft);
     }
 
     public void PauseGame(string type) {
