@@ -17,11 +17,13 @@ public class GameStatus : MonoBehaviour
     public GameObject gameOperObj;
     public GameObject playerObj;
     public ScoreManager scoreManager;
+    public GameObject beginningInstructionsMessage;
 
     private Text timeRemainingText;
     private Text gameStatText;
     private Text gameOperText;
-    public TextMeshProUGUI timeRemainingClockContentsText;
+    private TextMeshProUGUI timeRemainingClockContentsText;
+    private Image beginningInstructionsImage;
 
     public float timeLeft = 90;
     public int requiredScoreToWin = 6;
@@ -38,6 +40,7 @@ public class GameStatus : MonoBehaviour
         gameStatText = gameStatObj.GetComponent<Text>();
         gameOperText = gameOperObj.GetComponent<Text>();
         timeRemainingClockContentsText = timeRemainingClockContents.GetComponent<TextMeshProUGUI>();
+        beginningInstructionsImage = beginningInstructionsMessage.GetComponent<Image>();
         timeRemainingText.text = "Time Remaining: " + timeLeft;
         gameStatText.text = "";
         gameOperText.text = "";
@@ -48,6 +51,8 @@ public class GameStatus : MonoBehaviour
         Time.timeScale = 1.0f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        StartCoroutine(FadeImageAfterDelay(beginningInstructionsImage, 3f));
     }
 
     // Update is called once per frame
@@ -175,5 +180,27 @@ public class GameStatus : MonoBehaviour
     {
         yield return new WaitForSeconds(delaySeconds);
         ClearMessage(textArea);
+    }
+
+    IEnumerable SetInactiveAfterDelay(GameObject obj, bool active, bool fade, float delaySeconds)
+    {
+        yield return new WaitForSeconds(delaySeconds);
+        obj.SetActive(active);
+    }
+    
+    IEnumerator FadeImageAfterDelay(Image img, float delaySeconds)
+    {
+        yield return new WaitForSeconds(delaySeconds);
+        
+        // fade from opaque to transparent
+        // loop over 1 second backwards
+        for (float i = 1; i >= 0; i -= Time.deltaTime)
+        {
+            // set color with i as alpha
+            img.color = new Color(1, 1, 1, i);
+            yield return null;
+        }
+        
+        img.gameObject.SetActive(false);
     }
 }
