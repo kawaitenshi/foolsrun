@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -11,14 +12,19 @@ public class GameStatus : MonoBehaviour
     private bool played_stl = false;
 
     public GameObject timeRemainingObj;
+    public GameObject timeRemainingClockContents;
     public GameObject gameStatObj;
     public GameObject gameOperObj;
     public GameObject playerObj;
     public ScoreManager scoreManager;
+    public GameObject beginningInstructionsMessage;
 
     private Text timeRemainingText;
     private Text gameStatText;
     private Text gameOperText;
+    private Image gameOperImage;
+    private TextMeshProUGUI timeRemainingClockContentsText;
+    private Image beginningInstructionsImage;
 
     public float timeLeft = 90;
     public int requiredScoreToWin = 6;
@@ -34,15 +40,22 @@ public class GameStatus : MonoBehaviour
         timeRemainingText = timeRemainingObj.GetComponent<Text>();
         gameStatText = gameStatObj.GetComponent<Text>();
         gameOperText = gameOperObj.GetComponent<Text>();
+        gameOperImage = gameOperObj.gameObject.GetComponentInParent<Image>();
+        timeRemainingClockContentsText = timeRemainingClockContents.GetComponent<TextMeshProUGUI>();
+        beginningInstructionsImage = beginningInstructionsMessage.GetComponent<Image>();
         timeRemainingText.text = "Time Remaining: " + timeLeft;
         gameStatText.text = "";
         gameOperText.text = "";
+        gameOperImage.gameObject.SetActive(false);
+        timeRemainingClockContentsText.text = formatTime(timeLeft);
         slider.value = 1f;
         totalTime = timeLeft;
 
         Time.timeScale = 1.0f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        StartCoroutine(FadeImageAfterDelay(beginningInstructionsImage, 3f));
     }
 
     // Update is called once per frame
@@ -89,9 +102,31 @@ public class GameStatus : MonoBehaviour
             }
         }
     }
-    
+
+    /**
+     * Accepts the time left in seconds and returns a formatted time string.
+     */
+    string formatTime(float secondsLeft)
+    {
+        if (secondsLeft <= 0)
+        {
+            return "0:00";
+        }
+        return $"{(int) (secondsLeft / 60)}:{padInt((int)(secondsLeft % 60))}";
+    }
+
+    public string padInt(int time)
+    {
+        if (time < 10)
+        {
+            return $"0{time}";
+        }
+
+        return $"{time}";
+    }
     void DisplayTime(float time) {
         slider.value = timeLeft / totalTime;
+        timeRemainingClockContentsText.text = formatTime(timeLeft);
     }
 
     public void PauseGame(string type) {
@@ -102,12 +137,15 @@ public class GameStatus : MonoBehaviour
         if (type == "pause") {
             DisplayMessage(gameStatText, "Game Paused");
             DisplayMessage(gameOperText, "Resume");
+            gameOperImage.gameObject.SetActive(true);
         } else if (type == "lose") {
             DisplayMessage(gameStatText, "Game Over!");
             DisplayMessage(gameOperText, "Restart");
+            gameOperImage.gameObject.SetActive(true);
         } else if (type == "win") {
             DisplayMessage(gameStatText, "You Win!");
             DisplayMessage(gameOperText, "Restart");
+            gameOperImage.gameObject.SetActive(true);
         }
     }
 
@@ -117,6 +155,7 @@ public class GameStatus : MonoBehaviour
         Cursor.visible = false;
         gameStatText.text = "";
         gameOperText.text = "";
+        gameOperImage.gameObject.SetActive(false);
     }
 
     public void RestartGame() {
@@ -126,6 +165,7 @@ public class GameStatus : MonoBehaviour
         winStat = false;
         gameStatText.text = "";
         gameOperText.text = "";
+        gameOperImage.gameObject.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     
@@ -158,5 +198,27 @@ public class GameStatus : MonoBehaviour
     {
         yield return new WaitForSeconds(delaySeconds);
         ClearMessage(textArea);
+    }
+
+    IEnumerable SetInactiveAfterDelay(GameObject obj, bool active, bool fade, float delaySeconds)
+    {
+        yield return new WaitForSeconds(delaySeconds);
+        obj.SetActive(active);
+    }
+    
+    IEnumerator FadeImageAfterDelay(Image img, float delaySeconds)
+    {
+        yield return new WaitForSeconds(delaySeconds);
+        
+        // fade from opaque to transparent
+        // loop over 1 second backwards
+        for (float i = 1; i >= 0; i -= Time.deltaTime)
+        {
+            // set color with i as alpha
+            img.color = new Color(1, 1, 1, i);
+            yield return null;
+        }
+        
+        img.gameObject.SetActive(false);
     }
 }
