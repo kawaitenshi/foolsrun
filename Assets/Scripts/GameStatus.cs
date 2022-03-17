@@ -22,6 +22,7 @@ public class GameStatus : MonoBehaviour
     private Text timeRemainingText;
     private Text gameStatText;
     private Text gameOperText;
+    private Image gameOperImage;
     private TextMeshProUGUI timeRemainingClockContentsText;
     private Image beginningInstructionsImage;
 
@@ -39,11 +40,13 @@ public class GameStatus : MonoBehaviour
         timeRemainingText = timeRemainingObj.GetComponent<Text>();
         gameStatText = gameStatObj.GetComponent<Text>();
         gameOperText = gameOperObj.GetComponent<Text>();
+        gameOperImage = gameOperObj.gameObject.GetComponentInParent<Image>();
         timeRemainingClockContentsText = timeRemainingClockContents.GetComponent<TextMeshProUGUI>();
         beginningInstructionsImage = beginningInstructionsMessage.GetComponent<Image>();
         timeRemainingText.text = "Time Remaining: " + timeLeft;
         gameStatText.text = "";
         gameOperText.text = "";
+        gameOperImage.gameObject.SetActive(false);
         timeRemainingClockContentsText.text = formatTime(timeLeft);
         slider.value = 1f;
         totalTime = timeLeft;
@@ -109,7 +112,17 @@ public class GameStatus : MonoBehaviour
         {
             return "0:00";
         }
-        return $"{(int) (secondsLeft / 60)}:{(int) (secondsLeft % 60)}";
+        return $"{(int) (secondsLeft / 60)}:{padInt((int)(secondsLeft % 60))}";
+    }
+
+    public string padInt(int time)
+    {
+        if (time < 10)
+        {
+            return $"0{time}";
+        }
+
+        return $"{time}";
     }
     void DisplayTime(float time) {
         slider.value = timeLeft / totalTime;
@@ -124,12 +137,15 @@ public class GameStatus : MonoBehaviour
         if (type == "pause") {
             DisplayMessage(gameStatText, "Game Paused");
             DisplayMessage(gameOperText, "Resume");
+            gameOperImage.gameObject.SetActive(true);
         } else if (type == "lose") {
             DisplayMessage(gameStatText, "Game Over!");
             DisplayMessage(gameOperText, "Restart");
+            gameOperImage.gameObject.SetActive(true);
         } else if (type == "win") {
             DisplayMessage(gameStatText, "You Win!");
             DisplayMessage(gameOperText, "Restart");
+            gameOperImage.gameObject.SetActive(true);
         }
     }
 
@@ -139,6 +155,7 @@ public class GameStatus : MonoBehaviour
         Cursor.visible = false;
         gameStatText.text = "";
         gameOperText.text = "";
+        gameOperImage.gameObject.SetActive(false);
     }
 
     public void RestartGame() {
@@ -148,6 +165,7 @@ public class GameStatus : MonoBehaviour
         winStat = false;
         gameStatText.text = "";
         gameOperText.text = "";
+        gameOperImage.gameObject.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     
