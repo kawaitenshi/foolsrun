@@ -33,7 +33,7 @@ public class MainMenu : MonoBehaviour
         // AsyncOperation loadingOperation = SceneManager.LoadSceneAsync(_firstLevelName);
         LoadingText.SetActive(true);
         startButton.SetActive(false);
-        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
         SceneManager.LoadScene(_firstLevelName);
+        AsyncOperation unload = SceneManager.UnloadSceneAsync("MainMenu");
     }
 }
