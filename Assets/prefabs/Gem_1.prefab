@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 1166847531150340990}
   - component: {fileID: 4410946830982824392}
   - component: {fileID: 7073627976288883042}
+  - component: {fileID: 3472342498851827429}
   m_Layer: 0
   m_Name: Gem_1
   m_TagString: Gem
@@ -108,7 +109,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7084603008094818959}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.987406, y: 1.1639996, z: 29.985493}
+  m_LocalPosition: {x: -11.982625, y: 1.1639996, z: 29.989742}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7011496928260626734}
@@ -238,3 +239,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &3472342498851827429
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7084603008094818959}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 650a3725a05902b41947cf18a69ceb0d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
