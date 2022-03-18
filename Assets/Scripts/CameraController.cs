@@ -50,18 +50,18 @@ public class CameraController : MonoBehaviour
             // get mouse input can calculate rotation angles
             float rotateH = Input.GetAxis("Mouse X") * rotateSpeedH;
             float rotateV = Input.GetAxis("Mouse Y") * rotateSpeedV * -1;
-        
+
             // perform horizontal rotation
             Quaternion cameraTurnAngleY = Quaternion.AngleAxis(rotateH, Vector3.up);
             Quaternion cameraTurnAngleZ, cameraTurnAngleX;
-        
+
             // calculate vertical rotation on Z axis within limit
             if (cameraOffset[2] >= 0) {
                 cameraTurnAngleZ = Quaternion.AngleAxis(rotateV, Vector3.left);
             } else {
                 cameraTurnAngleZ = Quaternion.AngleAxis(rotateV, Vector3.right);
             }
-        
+
             // calculate vertical rotation on X axis within limit
             if (cameraOffset[0] >= 0) {
                 cameraTurnAngleX = Quaternion.AngleAxis(rotateV, Vector3.forward);
@@ -80,7 +80,7 @@ public class CameraController : MonoBehaviour
                     this.cameraOffset = cameraTurnAngleZ * this.cameraOffset;
                 }
             }
-        
+
             // perform vertical rotation on X axis within limit (bugs in limit need to be fixed)
             Quaternion tempX = transform.rotation * cameraTurnAngleX;
             if (rotateV > 0) {
@@ -110,34 +110,34 @@ public class CameraController : MonoBehaviour
         // if (Obstruction.gameObject.tag != "Player") {
         //    Obstruction.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
         // }
-        
+
         // there's some obstruction between player and camera
         if (Physics.Raycast(PlayerTransform.position, this.transform.position - PlayerTransform.position, out hit, defaultDistance)) {
             if (hit.collider.gameObject.tag != "Player" && hit.collider.gameObject.tag != "FinishLine") {
                 Obstruction = hit.transform;
                 // set obstructing object to transparent (need to find the right render or this won't work) (may not need at all)
                 // Obstruction.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
-                
+
                 if (Vector3.Distance(this.transform.position, PlayerTransform.position) > minDistance) {
                     // calculate direction and distance of zooming in
                     Vector3 direction = cameraOffset.normalized;
                     float distance = Vector3.Distance(PlayerTransform.position, this.transform.position) - hit.distance + 0.2f;
-                    
+
                     // zoom in
                     this.transform.position += this.transform.forward * distance;
-                    
+
                     // smoot camera zooming (somehow not working, need further debugging)
                     // this.transform.position = Vector3.Lerp(this.transform.position, this.transform.position + this.transform.forward * distance, zoomSpeed);
                 }
             }
-        
+
         // there's no obstruction between player and camera
         } else {
             // set obstructing object back to normal (need to find the right render or this won't work) (may not need at all)
             // if (Obstruction.gameObject.tag != "Player") {
             //     Obstruction.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
             // }
-            
+
             if (Vector3.Distance(this.transform.position, PlayerTransform.position) < defaultDistance) {
                 // calculate direction and distance of zooming out
                 Vector3 direction = cameraOffset.normalized;
@@ -145,7 +145,7 @@ public class CameraController : MonoBehaviour
 
                 // zoom out
                 this.transform.position -= this.transform.forward * distance;
-                
+
                 // smoot camera zooming (somehow not working, need further debugging)
                 // this.transform.position = Vector3.Lerp(this.transform.position, this.transform.position + this.transform.forward * distance, zoomSpeed);
             }

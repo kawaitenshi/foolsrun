@@ -39,7 +39,7 @@ public class PlayerCollision : MonoBehaviour
              GetComponent<AudioSource>().clip = gem_collect;
              GetComponent<AudioSource>().Play();
     }
-    
+
     if (collision.collider.CompareTag("Potion")) {
 
       collision.collider.gameObject.GetComponent<potionCollision>().Explode();
@@ -65,6 +65,8 @@ public class PlayerCollision : MonoBehaviour
         character1.SetActive(true);
         transform.parent.gameObject.GetComponent<Spawn>().setActivePlayer(character1);
         camera.GetComponent<CameraController>().PlayerTransform = character1.transform.Find("Focus");
+        if (camera.GetComponent<CameraController>().PlayerTransform == null) print("Focus wasn't found");
+        else print("Focus found");
         }
 //      else if (character3.activeSelf) {
 //        print("Changing to character 1");
