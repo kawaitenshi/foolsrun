@@ -37,22 +37,16 @@ public class Spawn : MonoBehaviour
        }
   }
 
-  public void setActivePlayer(GameObject activePlayer) {
-    if (spawnStarted)
-    {
-      print("IN SPAWN HAS STARTED\n");
-      print("Player is :" +player.ToString());
-      print("Active Potion was at index " + activePotion.ToString());
-      activePotion = (activePotion + 1) % 2;
-      print("Active Potion is now at index " + activePotion.ToString());
-    }
+  public void setActivePlayer(GameObject activePlayer)
+  {
+    if (spawnStarted) print("Player is :" +player.ToString());
     player = activePlayer;
     print("Setting the player to active player: " + activePlayer.ToString());
-    if (!spawnStarted)
-    {
-      print("IN SPAWN HASN'T STARTED\n");
-      activePotion = 0;
-      StartCoroutine(spawn());
-    }
+    if (!spawnStarted) StartCoroutine(spawn());
+  }
+
+  public void setActivePotion(int potion)
+  {
+    activePotion = potion;
   }
 }

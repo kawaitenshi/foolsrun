@@ -53,6 +53,7 @@ public class PlayerCollision : MonoBehaviour
         character2.SetActive(false);
         character1.SetActive(true);
         transform.parent.gameObject.GetComponent<Spawn>().setActivePlayer(character1);
+        transform.parent.gameObject.GetComponent<Spawn>().setActivePotion(1);
         camera.GetComponent<CameraController>().PlayerTransform = character1.transform.Find("Focus");
         }
 //      else if (character3.activeSelf) {
@@ -81,6 +82,7 @@ public class PlayerCollision : MonoBehaviour
         character1.SetActive(false);
         character2.SetActive(true);
         transform.parent.gameObject.GetComponent<Spawn>().setActivePlayer(character2);
+        transform.parent.gameObject.GetComponent<Spawn>().setActivePotion(0);
         camera.GetComponent<CameraController>().PlayerTransform = character2.transform.Find("Focus");
       }
     }
