@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 229735987465431271}
   m_Layer: 0
   m_Name: humanPotionBottle
-  m_TagString: ChickenPotion
+  m_TagString: HumanPotion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

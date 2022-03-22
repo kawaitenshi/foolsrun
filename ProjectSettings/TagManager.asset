@@ -9,6 +9,7 @@ TagManager:
   - Obstacle
   - Gem
   - ChickenPotion
+  - HumanPotion
   layers:
   - Default
   - TransparentFX
