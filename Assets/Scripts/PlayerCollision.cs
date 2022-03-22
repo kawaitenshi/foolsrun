@@ -40,7 +40,7 @@ public class PlayerCollision : MonoBehaviour
              GetComponent<AudioSource>().Play();
     }
 
-    if (collision.collider.CompareTag("Potion")) {
+    if (collision.collider.CompareTag("ChickenPotion")) {
 
       collision.collider.gameObject.GetComponent<potionCollision>().Explode();
       GetComponent<AudioSource>().clip = potion_hit;

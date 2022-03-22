@@ -8,6 +8,7 @@ TagManager:
   - FinishLine
   - Obstacle
   - Gem
+  - ChickenPotion
   layers:
   - Default
   - TransparentFX
