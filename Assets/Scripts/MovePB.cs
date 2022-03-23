@@ -64,12 +64,10 @@ public class MovePB : MonoBehaviour
         userJumped = Input.GetButton("Jump");
 
         // play animations according to keyboard inputs
-        movingForward = Input.GetKey("w") || Input.GetKey("s") ||
-                          Input.GetKey("a") || Input.GetKey("d");
+        movingForward = Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d");
         isGrounded = IsGrounded();
         jumping = Input.GetKey("space");
-        sprinting = Input.GetKey(KeyCode.LeftShift);
-
+        sprinting = Input.GetKey(KeyCode.LeftShift) && isGrounded;
     }
 
     private void FixedUpdate() {
