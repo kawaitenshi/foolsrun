@@ -190,7 +190,7 @@ public class MovePB : MonoBehaviour
         // boxcast not working now
         // float extraHeight = 0.05f;
         // bool hitGround = Physics.BoxCast(HumanCollider.bounds.center, HumanTransform.lossyScale, HumanTransform.up * -1, Quaternion.Euler(Vector3.zero), HumanTransform.lossyScale.y + extraHeight);
-        bool hitGround = Physics.Raycast(HumanTransform.position, Vector3.down, 0.1f);
+        bool hitGround = Physics.Raycast(HumanTransform.position, Vector3.down, 0.2f);
 
         Color rayColor;
         if (hitGround) {
@@ -198,7 +198,7 @@ public class MovePB : MonoBehaviour
         } else {
             rayColor = Color.red;
         }
-        Debug.DrawRay(HumanTransform.position, Vector3.down * 0.1f, rayColor);
+        Debug.DrawRay(HumanTransform.position, Vector3.down * 0.2f, rayColor);
         Debug.Log(distanceToGround);
 
         return hitGround;
