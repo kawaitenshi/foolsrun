@@ -29,7 +29,7 @@ public class MovePB : MonoBehaviour
     [SerializeField] private LayerMask PlatformLayerMask;
     public Collider HumanCollider;
     private bool userJumped;
-    private float distanceToGround;
+    public float distanceToGround;
 
     // model components
     private Rigidbody HumanRigidbody;
@@ -41,7 +41,7 @@ public class MovePB : MonoBehaviour
     // animation related
     Animator Animator;
     bool movingForward;
-    bool isGrounded;
+    public bool isGrounded;
     bool jumping;
     bool sprinting;
     bool hasFallen;
@@ -64,12 +64,10 @@ public class MovePB : MonoBehaviour
         userJumped = Input.GetButton("Jump");
 
         // play animations according to keyboard inputs
-        movingForward = Input.GetKey("w") || Input.GetKey("s") ||
-                          Input.GetKey("a") || Input.GetKey("d");
+        movingForward = Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d");
         isGrounded = IsGrounded();
         jumping = Input.GetKey("space");
-        sprinting = Input.GetKey(KeyCode.LeftShift);
-
+        sprinting = Input.GetKey(KeyCode.LeftShift) && isGrounded;
     }
 
     private void FixedUpdate() {
@@ -190,17 +188,16 @@ public class MovePB : MonoBehaviour
         // boxcast not working now
         // float extraHeight = 0.05f;
         // bool hitGround = Physics.BoxCast(HumanCollider.bounds.center, HumanTransform.lossyScale, HumanTransform.up * -1, Quaternion.Euler(Vector3.zero), HumanTransform.lossyScale.y + extraHeight);
-        bool hitGround = Physics.Raycast(HumanTransform.position, Vector3.down, distanceToGround - 0.36f);
+        bool hitGround = Physics.Raycast(HumanTransform.position, Vector3.down, 0.2f);
 
-        /*
         Color rayColor;
         if (hitGround) {
             rayColor = Color.green;
         } else {
             rayColor = Color.red;
         }
-        Debug.DrawRay(HumanTransform.position, Vector3.down * (distanceToGround - 0.36f), rayColor);
-        */
+        Debug.DrawRay(HumanTransform.position, Vector3.down * 0.2f, rayColor);
+        Debug.Log(distanceToGround);
 
         return hitGround;
     }
