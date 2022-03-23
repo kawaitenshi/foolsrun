@@ -29,7 +29,8 @@ public class GameStatus : MonoBehaviour
     public float timeLeft = 90;
     public int requiredScoreToWin = 6;
     private float totalTime;
-    public Slider slider;
+    public Slider slider; // Slider for time
+    public Image fill; // Fill for the slider
     public bool winStat = false;
     private Rigidbody _rigidbody;
 
@@ -64,7 +65,8 @@ public class GameStatus : MonoBehaviour
         if (timeLeft > 0) {
             if (timeLeft < 11 && !played_stl) {GetComponent<AudioSource>().clip = short_time_left;
                    GetComponent<AudioSource>().Play();
-                   played_stl = true;}
+                   played_stl = true;
+                   fill.color = Color.red;}
             timeLeft -= Time.deltaTime;
         } else {
             PauseGame("lose");
@@ -82,7 +84,7 @@ public class GameStatus : MonoBehaviour
                 // {
                 //     DisplayMessage(gameStatText, CollectMoreGemsMessage);
                 //     StartCoroutine(ClearMessageAfterDelay(gameStatText, 2));
-                //     
+                //
                 // }
         }
         if (winStat == true) {
@@ -168,7 +170,7 @@ public class GameStatus : MonoBehaviour
         gameOperImage.gameObject.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    
+
     public void DisplayMessage(Text textArea, string message) {
         // TODO: refactor this function to just check membership of an Enum of all the messages.
         if (message == "Game Over!") {
@@ -193,7 +195,7 @@ public class GameStatus : MonoBehaviour
     {
         textArea.text = "";
     }
-    
+
     IEnumerator ClearMessageAfterDelay(Text textArea, float delaySeconds)
     {
         yield return new WaitForSeconds(delaySeconds);
@@ -205,11 +207,11 @@ public class GameStatus : MonoBehaviour
         yield return new WaitForSeconds(delaySeconds);
         obj.SetActive(active);
     }
-    
+
     IEnumerator FadeImageAfterDelay(Image img, float delaySeconds)
     {
         yield return new WaitForSeconds(delaySeconds);
-        
+
         // fade from opaque to transparent
         // loop over 1 second backwards
         for (float i = 1; i >= 0; i -= Time.deltaTime)
@@ -218,7 +220,7 @@ public class GameStatus : MonoBehaviour
             img.color = new Color(1, 1, 1, i);
             yield return null;
         }
-        
+
         img.gameObject.SetActive(false);
     }
 }
