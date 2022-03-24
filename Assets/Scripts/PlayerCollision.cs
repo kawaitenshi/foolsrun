@@ -26,8 +26,8 @@ public class PlayerCollision : MonoBehaviour
       transform.parent.gameObject.GetComponent<Spawn>().setActivePlayer(character1);
     else if (character2.activeSelf)
       transform.parent.gameObject.GetComponent<Spawn>().setActivePlayer(character2);
-//    else if (character3.activeSelf)
-//      transform.parent.gameObject.GetComponent<Spawn>().setActivePlayer(character3);
+    else if (character3.activeSelf)
+      transform.parent.gameObject.GetComponent<Spawn>().setActivePlayer(character3);
     hitFinishLine = false;
   }
 

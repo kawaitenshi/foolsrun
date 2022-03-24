@@ -22,7 +22,7 @@ public class MoveDragon : MonoBehaviour
 
     // tune sensitivity of controls
     // original mass, drag, angularDrag: 1, 2, 0.05
-    private float moveScale = 0.6f; // original 0.5
+    private float moveScale = 0.4f; // original 0.5
     private float jumpScale = 10.0f; // original 4.0 (using AddForce)
 
     // jump limiter
@@ -178,8 +178,7 @@ public class MoveDragon : MonoBehaviour
         // boxcast not working now
         // float extraHeight = 0.05f;
         // bool hitGround = Physics.BoxCast(DragonCollider.bounds.center, DragonTransform.lossyScale, DragonTransform.up * -1, Quaternion.Euler(Vector3.zero), DragonTransform.lossyScale.y + extraHeight);
-        bool hitGround = Physics.Raycast(DragonTransform.position, Vector3.down, 0.2f)
-                        ||Physics.Raycast(DragonTransform.position, Vector3.forward, 10f);
+        bool hitGround = Physics.Raycast(DragonTransform.position, Vector3.down, 0.5f);
 
         Color rayColor;
         if (hitGround) {
