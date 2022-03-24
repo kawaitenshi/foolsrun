@@ -11,6 +11,7 @@ TagManager:
   - ChickenPotion
   - HumanPotion
   - DragonPotion
+  - PowerUp
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Platform
   - Water
   - UI
-  - Hallway
+  - 
   - 
   - 
   - 
