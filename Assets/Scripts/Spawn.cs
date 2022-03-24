@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawn : MonoBehaviour
+public class  Spawn : MonoBehaviour
 {
     public GameObject [] spawnObjects; // The object to spawn repeatedly
     public float timeToSpawn; // Time in seconds before the next spawn of spawnObject
