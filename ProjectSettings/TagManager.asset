@@ -10,6 +10,7 @@ TagManager:
   - Gem
   - ChickenPotion
   - HumanPotion
+  - DragonPotion
   layers:
   - Default
   - TransparentFX

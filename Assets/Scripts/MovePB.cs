@@ -197,7 +197,6 @@ public class MovePB : MonoBehaviour
             rayColor = Color.red;
         }
         Debug.DrawRay(HumanTransform.position, Vector3.down * 0.2f, rayColor);
-        Debug.Log(distanceToGround);
 
         return hitGround;
     }
