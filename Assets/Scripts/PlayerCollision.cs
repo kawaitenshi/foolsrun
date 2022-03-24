@@ -21,14 +21,13 @@ public class PlayerCollision : MonoBehaviour
     public AudioClip potion_hit;
 
     void Start() {
-    // Set the active player to player 2 for now for transform of spawn to work
-        if (character1.activeSelf) {
+        // Set the active player to player 2 for now for transform of spawn to work
+        if (character1.activeSelf)
             transform.parent.gameObject.GetComponent<Spawn>().setActivePlayer(character1);
-        } else if (character2.activeSelf) {
+        else if (character2.activeSelf)
             transform.parent.gameObject.GetComponent<Spawn>().setActivePlayer(character2);
-        } else if (character3.activeSelf) {
+        else if (character3.activeSelf)
             transform.parent.gameObject.GetComponent<Spawn>().setActivePlayer(character3);
-        }
         hitFinishLine = false;
         inHallway = false;
     }
@@ -59,9 +58,9 @@ public class PlayerCollision : MonoBehaviour
         print($"collision occured with {collision.collider.name}");
 
         if (collision.collider.CompareTag("Gem")) {
-                    GetComponent<AudioSource>().clip = gem_collect;
-                    GetComponent<AudioSource>().Play();
-        
+            GetComponent<AudioSource>().clip = gem_collect;
+            GetComponent<AudioSource>().Play();
+
         } else if (collision.collider.CompareTag("ChickenPotion")) {
             collision.collider.gameObject.GetComponent<potionCollision>().Explode();
             GetComponent<AudioSource>().clip = potion_hit;
@@ -76,7 +75,7 @@ public class PlayerCollision : MonoBehaviour
                 transform.parent.gameObject.GetComponent<Spawn>().setActivePlayer(character1);
                 transform.parent.gameObject.GetComponent<Spawn>().setActivePotion(2);
                 camera.GetComponent<CameraController>().PlayerTransform = character1.transform.Find("Focus");
-            
+        
             } else if (character3.activeSelf) {
                 print("Changing to character 1");
                 character1.transform.position = character3.transform.position;
@@ -87,7 +86,7 @@ public class PlayerCollision : MonoBehaviour
                 transform.parent.gameObject.GetComponent<Spawn>().setActivePotion(2);
                 camera.GetComponent<CameraController>().PlayerTransform = character1.transform.Find("Focus");
             }
-        
+    
         } else if (collision.collider.CompareTag("HumanPotion")) {
             collision.collider.gameObject.GetComponent<potionCollision>().Explode();
             GetComponent<AudioSource>().clip = potion_hit;
@@ -104,7 +103,7 @@ public class PlayerCollision : MonoBehaviour
                 transform.parent.gameObject.GetComponent<Spawn>().setActivePlayer(character2);
                 transform.parent.gameObject.GetComponent<Spawn>().setActivePotion(0);
                 camera.GetComponent<CameraController>().PlayerTransform = character2.transform.Find("Focus");
-            
+        
             } else if (character3.activeSelf) {
                 print("Changing to character 2");
                 character2.transform.position = character3.transform.position;
@@ -130,7 +129,7 @@ public class PlayerCollision : MonoBehaviour
                 transform.parent.gameObject.GetComponent<Spawn>().setActivePlayer(character3);
                 transform.parent.gameObject.GetComponent<Spawn>().setActivePotion(1);
                 camera.GetComponent<CameraController>().PlayerTransform = character3.transform.Find("Focus");
-            
+        
             } else if (character1.activeSelf) {
                 print("Changing to character 3");
                 character3.transform.position = character1.transform.position;
