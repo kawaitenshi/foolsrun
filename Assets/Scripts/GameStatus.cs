@@ -131,6 +131,11 @@ public class GameStatus : MonoBehaviour
         timeRemainingClockContentsText.text = formatTime(timeLeft);
     }
 
+    public void addTime(float time)
+    {
+        timeLeft += time;
+    }
+
     public void PauseGame(string type) {
         Time.timeScale = 0.0f;
         Cursor.lockState = CursorLockMode.None;
@@ -189,6 +194,12 @@ public class GameStatus : MonoBehaviour
         } else {
             textArea.text = "ERROR: Unknown input!";
         }
+    }
+
+    public void DisplayStatus(string status)
+    {
+        gameStatText.text = status;
+        StartCoroutine(ClearMessageAfterDelay(gameStatText, 1));
     }
 
     public void ClearMessage(Text textArea)

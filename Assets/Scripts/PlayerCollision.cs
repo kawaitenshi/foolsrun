@@ -142,6 +142,17 @@ public class PlayerCollision : MonoBehaviour
                 camera.GetComponent<CameraController>().PlayerTransform = character3.transform.Find("Focus");
             }
         }
+        else if (collision.collider.CompareTag("PowerUp")) {
+
+            collision.collider.gameObject.GetComponent<potionCollision>().Explode();
+            GetComponent<AudioSource>().clip = gem_collect;
+            GetComponent<AudioSource>().Play();
+
+            GameObject gameUi = GameObject.Find("Game UI");
+            // UnityEngine.Component gameStatus  = gameUi.GetComponent("Game Status");
+            gameUi.BroadcastMessage("addTime", 10);
+            gameUi.BroadcastMessage("DisplayStatus", "+10 seconds");
+        }
 
         if (collision.collider.CompareTag("FinishLine")) {
             hitFinishLine = true;
