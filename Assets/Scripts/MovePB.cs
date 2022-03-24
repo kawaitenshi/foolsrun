@@ -84,8 +84,7 @@ public class MovePB : MonoBehaviour
         Animator.SetBool("isIdle", !movingForward && isGrounded && !hasFallen);
         Animator.SetBool("fallen", hasFallen);
 
-        if (!hasFallen)
-        {
+        if (!hasFallen) {
             // move 90 degrees right (press only "D" or "D" + "W" + "S")
             if ((Input.GetKey("d") && !Input.GetKey("w") && !Input.GetKey("s")) || (Input.GetKey("d") && Input.GetKey("w") && Input.GetKey("s"))) {
                 userRotation[1] = cameraRotation[1];

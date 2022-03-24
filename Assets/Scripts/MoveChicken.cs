@@ -79,8 +79,7 @@ public class MoveChicken : MonoBehaviour
         Animator.SetBool("isRunning", sprinting && !hasFallen);
         Animator.SetBool("isIdle", !movingForward && isGrounded && !hasFallen);
 
-        if (!hasFallen)
-        {
+        if (!hasFallen) {
             // move 90 degrees right (press only "D" or "D" + "W" + "S")
             if ((Input.GetKey("d") && !Input.GetKey("w") && !Input.GetKey("s")) || (Input.GetKey("d") && Input.GetKey("w") && Input.GetKey("s"))) {
                 userRotation[1] = cameraRotation[1];
@@ -190,7 +189,6 @@ public class MoveChicken : MonoBehaviour
     /** Send a raycast to check if player is grounded and returns true if
     the player is on some sort of ground */
     private bool IsGrounded() {
-        // Debug.DrawRay(ChickenTransform.position, Vector3.down * 0.05f, Color.red);
         return Physics.Raycast(ChickenTransform.position, Vector3.down, 0.6f);
     }
 

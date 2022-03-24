@@ -114,9 +114,8 @@ public class PlayerCollision : MonoBehaviour
                 transform.parent.gameObject.GetComponent<Spawn>().setActivePotion(0);
                 camera.GetComponent<CameraController>().PlayerTransform = character2.transform.Find("Focus");
             }
-    
+        
         } else if (collision.collider.CompareTag("DragonPotion")) {
-
             collision.collider.gameObject.GetComponent<potionCollision>().Explode();
             GetComponent<AudioSource>().clip = potion_hit;
             GetComponent<AudioSource>().Play();
