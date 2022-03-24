@@ -79,67 +79,66 @@ public class MoveChicken : MonoBehaviour
         Animator.SetBool("isRunning", sprinting && !hasFallen);
         Animator.SetBool("isIdle", !movingForward && isGrounded && !hasFallen);
 
-        if (!hasFallen)
-        {
-          // move 90 degrees right (press only "D" or "D" + "W" + "S")
-          if ((Input.GetKey("d") && !Input.GetKey("w") && !Input.GetKey("s")) || (Input.GetKey("d") && Input.GetKey("w") && Input.GetKey("s"))) {
-              userRotation[1] = cameraRotation[1];
-              userRotation += new Vector3(0, 90, 0);
-              heading = ChickenTransform.forward;
-              inputScale = Mathf.Abs(adInput);
+        if (!hasFallen) {
+            // move 90 degrees right (press only "D" or "D" + "W" + "S")
+            if ((Input.GetKey("d") && !Input.GetKey("w") && !Input.GetKey("s")) || (Input.GetKey("d") && Input.GetKey("w") && Input.GetKey("s"))) {
+                userRotation[1] = cameraRotation[1];
+                userRotation += new Vector3(0, 90, 0);
+                heading = ChickenTransform.forward;
+                inputScale = Mathf.Abs(adInput);
 
-          // move 90 degrees left (press only "A" or "A" + "W" + "S")
-          } else if ((Input.GetKey("a") && !Input.GetKey("w") && !Input.GetKey("s")) || (Input.GetKey("a") && Input.GetKey("w") && Input.GetKey("s"))) {
-              userRotation[1] = cameraRotation[1];
-              userRotation += new Vector3(0, -90, 0);
-              heading = ChickenTransform.forward;
-              inputScale = Mathf.Abs(adInput);
+            // move 90 degrees left (press only "A" or "A" + "W" + "S")
+            } else if ((Input.GetKey("a") && !Input.GetKey("w") && !Input.GetKey("s")) || (Input.GetKey("a") && Input.GetKey("w") && Input.GetKey("s"))) {
+                userRotation[1] = cameraRotation[1];
+                userRotation += new Vector3(0, -90, 0);
+                heading = ChickenTransform.forward;
+                inputScale = Mathf.Abs(adInput);
 
-          // move 0 degree forward (press only "W" or "W" + "A" + "D")
-          } else if ((Input.GetKey("w") && !Input.GetKey("a") && !Input.GetKey("d")) || (Input.GetKey("w") && Input.GetKey("a") && Input.GetKey("d"))) {
-              userRotation[1] = cameraRotation[1];
-              heading = ChickenTransform.forward;
-              inputScale = Mathf.Abs(wsInput);
+            // move 0 degree forward (press only "W" or "W" + "A" + "D")
+            } else if ((Input.GetKey("w") && !Input.GetKey("a") && !Input.GetKey("d")) || (Input.GetKey("w") && Input.GetKey("a") && Input.GetKey("d"))) {
+                userRotation[1] = cameraRotation[1];
+                heading = ChickenTransform.forward;
+                inputScale = Mathf.Abs(wsInput);
 
-          // move 180 degrees backward (press only "S" or "S" + "A" + "D")
-          } else if ((Input.GetKey("s") && !Input.GetKey("a") && !Input.GetKey("d")) || (Input.GetKey("s") && Input.GetKey("a") && Input.GetKey("d"))) {
-              userRotation[1] = cameraRotation[1];
-              userRotation += new Vector3(0, 180, 0);
-              heading = ChickenTransform.forward;
-              inputScale = Mathf.Abs(wsInput);
+            // move 180 degrees backward (press only "S" or "S" + "A" + "D")
+            } else if ((Input.GetKey("s") && !Input.GetKey("a") && !Input.GetKey("d")) || (Input.GetKey("s") && Input.GetKey("a") && Input.GetKey("d"))) {
+                userRotation[1] = cameraRotation[1];
+                userRotation += new Vector3(0, 180, 0);
+                heading = ChickenTransform.forward;
+                inputScale = Mathf.Abs(wsInput);
 
-          // move 45 degrees right (press "W" + "D")
-          } else if (Input.GetKey("w") && Input.GetKey("d")) {
-              userRotation[1] = cameraRotation[1];
-              userRotation += new Vector3(0, 45, 0);
-              heading = ChickenTransform.forward;
-              inputScale = (Mathf.Abs(wsInput) + Mathf.Abs(adInput)) / 2.0f;
+            // move 45 degrees right (press "W" + "D")
+            } else if (Input.GetKey("w") && Input.GetKey("d")) {
+                userRotation[1] = cameraRotation[1];
+                userRotation += new Vector3(0, 45, 0);
+                heading = ChickenTransform.forward;
+                inputScale = (Mathf.Abs(wsInput) + Mathf.Abs(adInput)) / 2.0f;
 
-          // move 45 degrees left (press "W" + "A")
-          } else if (Input.GetKey("w") && Input.GetKey("a")) {
-              userRotation[1] = cameraRotation[1];
-              userRotation += new Vector3(0, -45, 0);
-              heading = ChickenTransform.forward;
-              inputScale = (Mathf.Abs(wsInput) + Mathf.Abs(adInput)) / 2.0f;
+            // move 45 degrees left (press "W" + "A")
+            } else if (Input.GetKey("w") && Input.GetKey("a")) {
+                userRotation[1] = cameraRotation[1];
+                userRotation += new Vector3(0, -45, 0);
+                heading = ChickenTransform.forward;
+                inputScale = (Mathf.Abs(wsInput) + Mathf.Abs(adInput)) / 2.0f;
 
-          // move 135 degrees right (press "S" + "D")
-          } else if (Input.GetKey("s") && Input.GetKey("d")) {
-              userRotation[1] = cameraRotation[1];
-              userRotation += new Vector3(0, 135, 0);
-              heading = ChickenTransform.forward;
-              inputScale = (Mathf.Abs(wsInput) + Mathf.Abs(adInput)) / 2.0f;
+            // move 135 degrees right (press "S" + "D")
+            } else if (Input.GetKey("s") && Input.GetKey("d")) {
+                userRotation[1] = cameraRotation[1];
+                userRotation += new Vector3(0, 135, 0);
+                heading = ChickenTransform.forward;
+                inputScale = (Mathf.Abs(wsInput) + Mathf.Abs(adInput)) / 2.0f;
 
-          // move 135 degrees left (press "S" + "A")
-          } else if (Input.GetKey("s") && Input.GetKey("a")) {
-              userRotation[1] = cameraRotation[1];
-              userRotation += new Vector3(0, -135, 0);
-              heading = ChickenTransform.forward;
-              inputScale = (Mathf.Abs(wsInput) + Mathf.Abs(adInput)) / 2.0f;
+            // move 135 degrees left (press "S" + "A")
+            } else if (Input.GetKey("s") && Input.GetKey("a")) {
+                userRotation[1] = cameraRotation[1];
+                userRotation += new Vector3(0, -135, 0);
+                heading = ChickenTransform.forward;
+                inputScale = (Mathf.Abs(wsInput) + Mathf.Abs(adInput)) / 2.0f;
 
-          // stand still
-          } else {
-              inputScale = 0;
-          }
+            // stand still
+            } else {
+                inputScale = 0;
+            }
         }
         // rotate character to the right direction
         ChickenTransform.rotation = Quaternion.Lerp(ChickenTransform.rotation, Quaternion.Euler(userRotation), 0.3f);
@@ -190,7 +189,6 @@ public class MoveChicken : MonoBehaviour
     /** Send a raycast to check if player is grounded and returns true if
     the player is on some sort of ground */
     private bool IsGrounded() {
-        // Debug.DrawRay(ChickenTransform.position, Vector3.down * 0.05f, Color.red);
         return Physics.Raycast(ChickenTransform.position, Vector3.down, 0.6f);
     }
 
