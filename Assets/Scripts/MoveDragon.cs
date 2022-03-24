@@ -78,8 +78,8 @@ public class MoveDragon : MonoBehaviour
 
         // perform animations
         Animator.SetBool("isWalking", movingForward && !hasFallen);
-        // Animator.SetBool("isFlying", !isGrounded && !hasFallen);
-        // Animator.SetBool("isGrounded", isGrounded && !hasFallen);
+        Animator.SetBool("isFlying", !isGrounded && !hasFallen);
+        Animator.SetBool("isGrounded", isGrounded && !hasFallen);
         Animator.SetBool("isRunning", sprinting && !hasFallen);
         Animator.SetBool("isIdle", !movingForward && isGrounded && !hasFallen);
         Animator.SetBool("fallen", hasFallen);
@@ -178,7 +178,8 @@ public class MoveDragon : MonoBehaviour
         // boxcast not working now
         // float extraHeight = 0.05f;
         // bool hitGround = Physics.BoxCast(DragonCollider.bounds.center, DragonTransform.lossyScale, DragonTransform.up * -1, Quaternion.Euler(Vector3.zero), DragonTransform.lossyScale.y + extraHeight);
-        bool hitGround = Physics.Raycast(DragonTransform.position, Vector3.down, 0.2f);
+        bool hitGround = Physics.Raycast(DragonTransform.position, Vector3.down, 0.2f)
+                        ||Physics.Raycast(DragonTransform.position, Vector3.forward, 10f);
 
         Color rayColor;
         if (hitGround) {
