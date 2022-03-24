@@ -12,8 +12,9 @@ public class Spawn : MonoBehaviour
     private int activePotion; // The potion in the spawnObjects index that is currently spawning
 
     IEnumerator spawn () {
-        while (!PlayerCollision.inHallway) {
+        while (true) {
             spawnStarted = true;
+
             // Set the position of the spawn object as the position of the player
             position = player.transform.position;
             position += player.transform.forward * 3;
@@ -25,7 +26,7 @@ public class Spawn : MonoBehaviour
                         + position.y.ToString() + " "
                         + position.z.ToString());
 
-            GameObject potion  = Instantiate(spawnObjects[activePotion],
+            GameObject potion = Instantiate(spawnObjects[activePotion],
                                                 position,
                                                 Quaternion.identity);
 
