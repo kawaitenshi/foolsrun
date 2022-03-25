@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 
 public class TextButton : MonoBehaviour, IPointerClickHandler
@@ -34,10 +35,14 @@ public class TextButton : MonoBehaviour, IPointerClickHandler
             Debug.Log("Resuming!");
             gameStatus.ResumeGame();
         }
-        else
+        else if (gameStatus.winStat == false)
         {
             Debug.Log("Restarting!");
             gameStatus.RestartGame();
+        }
+        else {
+             SceneManager.LoadScene("Level2");
+             //AsyncOperation unload = SceneManager.UnloadSceneAsync("MainScene");
         }
     }
 }
