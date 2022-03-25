@@ -151,7 +151,7 @@ public class GameStatus : MonoBehaviour
             gameOperImage.gameObject.SetActive(true);
         } else if (type == "win") {
             DisplayMessage(gameStatText, "You Win!");
-            DisplayMessage(gameOperText, "Restart");
+            DisplayMessage(gameOperText, "Next Level");
             gameOperImage.gameObject.SetActive(true);
         }
     }
@@ -186,6 +186,8 @@ public class GameStatus : MonoBehaviour
             textArea.text = "Resume";
         } else if (message == "You Win!") {
             textArea.text = "You Win!";
+        } else if (message == "Next Level") {
+            textArea.text = "Next Level";
         } else if (message == "Restart") {
             textArea.text = "Restart";
         } else if (message == CollectMoreGemsMessage)

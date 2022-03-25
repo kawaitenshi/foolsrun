@@ -10,6 +10,8 @@ public class PlayerCollision : MonoBehaviour
     public GameObject character3;
     public static bool hitFinishLine;
     public static bool inHallway;
+    public ScoreManager scoreManager;
+    public GameStatus gameStatus;
 
     public GameObject camera;
     public MovePB moveHuman;
@@ -154,7 +156,8 @@ public class PlayerCollision : MonoBehaviour
         }
 
         if (collision.collider.CompareTag("FinishLine")) {
-            hitFinishLine = true;
+            if (scoreManager.GetScore() >= gameStatus.requiredScoreToWin)
+            {hitFinishLine = true;}
         }
     }
 }
