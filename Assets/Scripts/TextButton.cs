@@ -16,6 +16,8 @@ public class TextButton : MonoBehaviour, IPointerClickHandler
 
     private void Start()
     {
+
+
         gameStatus = statusObj.GetComponent<GameStatus>();
     }
 
@@ -41,7 +43,15 @@ public class TextButton : MonoBehaviour, IPointerClickHandler
             gameStatus.RestartGame();
         }
         else {
-             SceneManager.LoadScene("Level2");
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName == "MainScene")
+             {SceneManager.LoadScene("Level2");}
+        else if (sceneName == "Level2")
+            {SceneManager.LoadScene("Level3");}
+        else if (sceneName == "Level3")
+            {SceneManager.LoadScene("MainMenu");}
+        else {Debug.Log("Scene loading error");}
              //AsyncOperation unload = SceneManager.UnloadSceneAsync("MainScene");
         }
     }

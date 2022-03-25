@@ -55,8 +55,11 @@ public class GameStatus : MonoBehaviour
         Time.timeScale = 1.0f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
-        StartCoroutine(FadeImageAfterDelay(beginningInstructionsImage, 3f));
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName == "MainScene") {
+        StartCoroutine(FadeImageAfterDelay(beginningInstructionsImage, 3f));}
+        else {StartCoroutine(FadeImageAfterDelay(beginningInstructionsImage, 0f));}
     }
 
     // Update is called once per frame
@@ -150,9 +153,16 @@ public class GameStatus : MonoBehaviour
             DisplayMessage(gameOperText, "Restart");
             gameOperImage.gameObject.SetActive(true);
         } else if (type == "win") {
-            DisplayMessage(gameStatText, "You Win!");
+        Scene currentScene = SceneManager.GetActiveScene();
+                string sceneName = currentScene.name;
+                if (sceneName != "Level3") {
+            DisplayMessage(gameStatText, "Level Cleared!");
             DisplayMessage(gameOperText, "Next Level");
+            gameOperImage.gameObject.SetActive(true);}
+            else {DisplayMessage(gameStatText, "You Win!");
+            DisplayMessage(gameOperText, "End");
             gameOperImage.gameObject.SetActive(true);
+            }
         }
     }
 
@@ -184,10 +194,14 @@ public class GameStatus : MonoBehaviour
             textArea.text = "Game Paused";
         } else if (message == "Resume") {
             textArea.text = "Resume";
-        } else if (message == "You Win!") {
-            textArea.text = "You Win!";
+        } else if (message == "Level Cleared!") {
+            textArea.text = "Level Cleared!";
         } else if (message == "Next Level") {
             textArea.text = "Next Level";
+        } else if (message == "You Win!") {
+            textArea.text = "You Win!";
+        } else if (message == "End") {
+            textArea.text = "End";
         } else if (message == "Restart") {
             textArea.text = "Restart";
         } else if (message == CollectMoreGemsMessage)
