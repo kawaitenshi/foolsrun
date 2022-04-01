@@ -64,7 +64,7 @@ public class MoveChicken : MonoBehaviour
         isGrounded = IsGrounded();
         jumping = Input.GetKey("space");
         sprinting = Input.GetKey(KeyCode.LeftShift);
-                Animator.SetBool("fallen", hasFallen);
+        Animator.SetBool("fallen", hasFallen);
     }
 
     private void FixedUpdate() {
