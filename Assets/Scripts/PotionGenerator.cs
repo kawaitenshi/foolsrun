@@ -15,6 +15,8 @@ public class PotionGenerator : MonoBehaviour
     {
       position = new Vector3(0f, 2f, 0f);
       position += gameObject.transform.position;
+      var potion = Instantiate(activePotion, position, Quaternion.identity);
+      potion.transform.parent = gameObject.transform;
     }
 
     // Call coroutine to generate a potion on this platform
