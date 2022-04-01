@@ -15,11 +15,10 @@ public class PotionGenerator : MonoBehaviour
     {
       position = new Vector3(0f, 2f, 0f);
       position += gameObject.transform.position;
-      generate();
     }
 
     // Call coroutine to generate a potion on this platform
-    void generate()
+    public void generate()
     {
       StartCoroutine(spawn());
     }
