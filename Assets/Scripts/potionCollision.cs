@@ -21,6 +21,7 @@ public class potionCollision : MonoBehaviour
     GameObject effect = Instantiate(particleEffect,
       transform.position,
       Quaternion.identity);
+    gameObject.transform.parent.GetComponent<PotionGenerator>().generate();
     Destroy(gameObject);
   }
 }
