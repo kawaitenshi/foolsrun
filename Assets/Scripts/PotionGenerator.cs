@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // This gets attached to a potion generation platform
-public class generatePotion : MonoBehaviour
+public class PotionGenerator : MonoBehaviour
 {
-    private bool hasPotion; // This platform has a potion
+    private Vector3 position;
+
     public float timeToSpawn; // Time before potion spawns again
+    public GameObject activePotion; // The potion to generate on this spot
 
     // Start is called before the first frame update
     void Start()
     {
-      hasPotion = true;
+      position = new Vector3(0f, 2f, 0f);
+      position += gameObject.transform.position;
+      generate();
     }
 
     // Call coroutine to generate a potion on this platform
@@ -24,10 +28,12 @@ public class generatePotion : MonoBehaviour
     IEnumerator spawn()
     {
       yield return new WaitForSeconds(timeToSpawn);
+
       // Instantiate new object as child of platform
-      // For now, we will just generate dragon potions
-      // Add other potions later
-      //Instantiate()
+      var potion = Instantiate(activePotion,
+                               position,
+                               Quaternion.identity);
+      potion.transform.parent = gameObject.transform;
     }
 
 }
