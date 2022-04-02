@@ -205,8 +205,8 @@ public class MovePB : MonoBehaviour
     private void OnCollisionEnter(Collision collision) {
         if (collision.collider.CompareTag("Obstacle")) {
             print("human collided with obstacle");
-            hasFallen = true;
-            StartCoroutine(Slowed());
+//            hasFallen = true;
+//            StartCoroutine(Slowed());
         }
     }
 

@@ -12,6 +12,8 @@ TagManager:
   - HumanPotion
   - DragonPotion
   - PowerUp
+  - AddTenSec
+  - AddFiveSec
   layers:
   - Default
   - TransparentFX

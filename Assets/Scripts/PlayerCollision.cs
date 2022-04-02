@@ -50,7 +50,7 @@ public class PlayerCollision : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collision) {
-        print($"collision occured with {collision.collider.name}");
+        print($"collision occurred with {collision.collider.name}");
 
         if (collision.collider.CompareTag("Gem")) {
             GetComponent<AudioSource>().clip = gem_collect;
@@ -124,8 +124,9 @@ public class PlayerCollision : MonoBehaviour
                 camera.GetComponent<CameraController>().PlayerTransform = character3.transform.Find("Focus");
             }
         }
-        else if (collision.collider.CompareTag("PowerUp")) {
-            Destroy(collision.collider.gameObject);
+        else if (collision.collider.CompareTag("AddTenSec")) {
+            if (gameObject != null)
+                {Destroy(collision.collider.gameObject);}
             GetComponent<AudioSource>().clip = gem_collect;
             GetComponent<AudioSource>().Play();
 
@@ -133,6 +134,18 @@ public class PlayerCollision : MonoBehaviour
             // UnityEngine.Component gameStatus  = gameUi.GetComponent("Game Status");
             gameUi.BroadcastMessage("addTime", 10);
             gameUi.BroadcastMessage("DisplayStatus", "+10 seconds");
+        }
+
+        else if (collision.collider.CompareTag("AddFiveSec")) {
+            if (gameObject != null)
+                {Destroy(collision.collider.gameObject);}
+            GetComponent<AudioSource>().clip = gem_collect;
+            GetComponent<AudioSource>().Play();
+
+            GameObject gameUi = GameObject.Find("Game UI");
+            // UnityEngine.Component gameStatus  = gameUi.GetComponent("Game Status");
+            gameUi.BroadcastMessage("addTime", 5);
+            gameUi.BroadcastMessage("DisplayStatus", "+5 seconds");
         }
 
         if (collision.collider.CompareTag("FinishLine")) {
