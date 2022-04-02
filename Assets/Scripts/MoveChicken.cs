@@ -178,11 +178,11 @@ public class MoveChicken : MonoBehaviour
     void OnCollisionEnter(Collision collision) {
         if (collision.collider.CompareTag("Obstacle")) {
             print("chicken collided with obstacle");
-            hasFallen = true;
-            print("Fallen set to true");
-            GetComponent<AudioSource>().clip = chickenObs;
-            GetComponent<AudioSource>().Play();
-            StartCoroutine(Slowed());
+//            hasFallen = true;
+//            print("Fallen set to true");
+//            GetComponent<AudioSource>().clip = chickenObs;
+//            GetComponent<AudioSource>().Play();
+//            StartCoroutine(Slowed());
         }
     }
 

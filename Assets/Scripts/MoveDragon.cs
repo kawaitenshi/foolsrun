@@ -180,8 +180,8 @@ public class MoveDragon : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision) {
         if (collision.collider.CompareTag("Obstacle")) {
-            hasFallen = true;
-            StartCoroutine(Slowed());
+//            hasFallen = true;
+//            StartCoroutine(Slowed());
         }
     }
 
