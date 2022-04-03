@@ -14,8 +14,7 @@ public class potionCollision : MonoBehaviour
     GameObject effect = Instantiate(particleEffect,
                                     transform.position,
                                     Quaternion.identity);
-    if (gameObject != null)
-    {Destroy(gameObject);}
+    Destroy(gameObject);
   }
 
   public void Explode() {
@@ -24,6 +23,6 @@ public class potionCollision : MonoBehaviour
       Quaternion.identity);
 //    gameObject.transform.parent.GetComponent<PotionGenerator>().generate();
     if (gameObject != null)
-        {Destroy(gameObject);}
+    {Destroy(gameObject);}
   }
 }
