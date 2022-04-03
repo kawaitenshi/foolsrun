@@ -46,6 +46,6 @@ public class PotionSpawn : MonoBehaviour
                 elapsed = 0f;
             }
         }
-        if (elapsed >= 4f) {fell_already = false;}
+        if (elapsed >= 5f) {fell_already = false;}
    }
 }
