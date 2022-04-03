@@ -13,35 +13,28 @@ public class PotionGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      position = new Vector3(0f, 10f, 0f);
+      position = new Vector3(0f, 2f, 0f);
       position += gameObject.transform.position;
-//      var potion = Instantiate(activePotion, position, Quaternion.identity);
-//      potion.transform.parent = gameObject.transform;
+      var potion = Instantiate(activePotion, position, Quaternion.identity);
+      potion.transform.parent = gameObject.transform;
     }
 
-    void OnCollisionEnter(Collision collision) {
-        print("collision occurred with {collision.collider.name}");
-        if (collision.collider.CompareTag("Player")) {
-            StartCoroutine(spawn());
-            }
-        }
-
-//    // Call coroutine to generate a potion on this platform
-//    public void generate()
-//    {
-//
-//    }
+    // Call coroutine to generate a potion on this platform
+    public void generate()
+    {
+      StartCoroutine(spawn());
+    }
 
     // Wait timeToSpawn seconds before spawning potion
     IEnumerator spawn()
     {
+      yield return new WaitForSeconds(timeToSpawn);
+
       // Instantiate new object as child of platform
       var potion = Instantiate(activePotion,
                                position,
                                Quaternion.identity);
       potion.transform.parent = gameObject.transform;
-
-      yield return new WaitForSeconds(timeToSpawn);
     }
 
 }
