@@ -16,7 +16,8 @@ public class GemHit : MonoBehaviour
         if (collision.collider.tag == "Player")
         {
           print("Player gem collision happened");
-            Destroy(this.gameObject);
+          if (gameObject != null)
+            {Destroy(this.gameObject);}
             ScoreMan.UpdateScore();
         }
     }

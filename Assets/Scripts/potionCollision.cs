@@ -14,7 +14,8 @@ public class potionCollision : MonoBehaviour
     GameObject effect = Instantiate(particleEffect,
                                     transform.position,
                                     Quaternion.identity);
-    Destroy(gameObject);
+    if (gameObject != null)
+    {Destroy(gameObject);}
   }
 
   public void Explode() {
