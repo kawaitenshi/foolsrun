@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     
-    private string _firstLevelName = "MainScene";
+    private string _firstLevelName = "MainScenev3";
     public GameObject startButton;
     public GameObject LoadingText;
   
@@ -34,6 +34,6 @@ public class MainMenu : MonoBehaviour
         LoadingText.SetActive(true);
         startButton.SetActive(false);
         SceneManager.LoadScene(_firstLevelName);
-        AsyncOperation unload = SceneManager.UnloadSceneAsync("MainMenu");
+        // AsyncOperation unload = SceneManager.UnloadSceneAsync("MainMenu");
     }
 }

@@ -4,11 +4,8 @@
     <list default="true" id="cf567f80-3f70-4cca-b79c-036652e4ce36" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScenev3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScenev3.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GemHit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GemHit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PotionSpawnLower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PotionSpawnLower.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/potionCollision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/potionCollision.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/potionSpawnLowerer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/potionSpawnLowerer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MainMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
