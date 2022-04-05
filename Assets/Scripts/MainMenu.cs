@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    
-    private string _firstLevelName = "MainScenev3";
+    private string _firstLevelName = "Level 1.1";
+    private string _tutorialLevelName = "Tutorial";
     public GameObject startButton;
+    public GameObject tutorialButton;
     public GameObject LoadingText;
   
     // Start is called before the first frame update
@@ -28,12 +29,19 @@ public class MainMenu : MonoBehaviour
         
     }
 
+    public void OnPointerClick(PointerEventData pointerEventData)
+    {
+        Debug.Log("click" + pointerEventData.button);
+        // invoke your event
+        // onClick.Invoke();
+    }
+
     public void NewGame()
     {
         // AsyncOperation loadingOperation = SceneManager.LoadSceneAsync(_firstLevelName);
-        LoadingText.SetActive(true);
-        startButton.SetActive(false);
-        SceneManager.LoadScene(_firstLevelName);
+        //LoadingText.SetActive(true);
+        //startButton.SetActive(false);
+        //SceneManager.LoadScene(_firstLevelName);
         // AsyncOperation unload = SceneManager.UnloadSceneAsync("MainMenu");
     }
 }
