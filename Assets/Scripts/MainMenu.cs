@@ -1,39 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
-{
-    
-    private string _firstLevelName = "MainScenev3";
+public class MainMenu : MonoBehaviour, IPointerClickHandler
+{    
+    private string _firstLevelName = "Level 1.1";
+    private string _tutorialLevelName = "Tutorial";
     public GameObject startButton;
+    public GameObject tutorialButton;
     public GameObject LoadingText;
-  
+    public UnityEvent onClick;
+
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        // Disable this if adding other buttons to the UI.
-        if (Input.anyKeyDown.Equals(true))
-        {
-            NewGame();
-        }
-        
+    void Update() {
+
     }
 
-    public void NewGame()
-    {
-        // AsyncOperation loadingOperation = SceneManager.LoadSceneAsync(_firstLevelName);
-        LoadingText.SetActive(true);
+    public void OnPointerClick(PointerEventData pointerEventData) {
+        onClick.Invoke();
+    }
+
+    public void NewGame() {
         startButton.SetActive(false);
+        tutorialButton.SetActive(false);
+        LoadingText.SetActive(true);
         SceneManager.LoadScene(_firstLevelName);
-        // AsyncOperation unload = SceneManager.UnloadSceneAsync("MainMenu");
+    }
+
+    public void Tutorial() {
+        startButton.SetActive(false);
+        tutorialButton.SetActive(false);
+        LoadingText.SetActive(true);
+        SceneManager.LoadScene(_tutorialLevelName);
     }
 }
