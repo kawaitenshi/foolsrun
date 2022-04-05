@@ -13,15 +13,22 @@ public class GameStatus : MonoBehaviour
 
     public GameObject timeRemainingObj;
     public GameObject timeRemainingClockContents;
-    public GameObject gameStatObj;
+    //public GameObject gameStatObj;
     public GameObject gameOperObj;
     public GameObject playerObj;
     public ScoreManager scoreManager;
     public GameObject beginningInstructionsMessage;
 
+    public GameObject GamePaused;
+    public GameObject YouWin;
+    public GameObject YouLose;
+    public GameObject ResumeButton;
+    public GameObject RestartButton;
+    public GameObject NextLevelButton;
+
     private Text timeRemainingText;
-    private Text gameStatText;
-    private Text gameOperText;
+    //private Text gameStatText;
+    //private Text gameOperText;
     private Image gameOperImage;
     private TextMeshProUGUI timeRemainingClockContentsText;
     private Image beginningInstructionsImage;
@@ -39,27 +46,40 @@ public class GameStatus : MonoBehaviour
     // Start is called before the first frame update
     void Start() {
         timeRemainingText = timeRemainingObj.GetComponent<Text>();
-        gameStatText = gameStatObj.GetComponent<Text>();
-        gameOperText = gameOperObj.GetComponent<Text>();
+        //gameStatText = gameStatObj.GetComponent<Text>();
+        //gameOperText = gameOperObj.GetComponent<Text>();
         gameOperImage = gameOperObj.gameObject.GetComponentInParent<Image>();
         timeRemainingClockContentsText = timeRemainingClockContents.GetComponent<TextMeshProUGUI>();
         beginningInstructionsImage = beginningInstructionsMessage.GetComponent<Image>();
         timeRemainingText.text = "Time Remaining: " + timeLeft;
-        gameStatText.text = "";
-        gameOperText.text = "";
+
+        //gameStatText.text = "";
+        //gameOperText.text = "";
         gameOperImage.gameObject.SetActive(false);
+        //GamePaused.SetActive(false);
+        YouWin.SetActive(false);
+        YouLose.SetActive(false);
+        ResumeButton.SetActive(false);
+        RestartButton.SetActive(false);
+        NextLevelButton.SetActive(false);
+
         timeRemainingClockContentsText.text = formatTime(timeLeft);
         slider.value = 1f;
         totalTime = timeLeft;
 
+        // lock and hide cursor
         Time.timeScale = 1.0f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        // get infomation of current scene
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
         if (sceneName == "MainScene") {
-        StartCoroutine(FadeImageAfterDelay(beginningInstructionsImage, 3f));}
-        else {StartCoroutine(FadeImageAfterDelay(beginningInstructionsImage, 0f));}
+            StartCoroutine(FadeImageAfterDelay(beginningInstructionsImage, 3f));
+        } else {
+            StartCoroutine(FadeImageAfterDelay(beginningInstructionsImage, 0f));
+        }
     }
 
     // Update is called once per frame
@@ -79,10 +99,9 @@ public class GameStatus : MonoBehaviour
         // Check if player has reached end of the maze
         for (int i=0; i<playerObj.transform.childCount; i++) {
             GameObject childObj = playerObj.transform.GetChild(i).gameObject;
-            if (PlayerCollision.hitFinishLine && scoreManager.GetScore() >= requiredScoreToWin)
-            {
+            if (PlayerCollision.hitFinishLine && scoreManager.GetScore() >= requiredScoreToWin) {
                 winStat = true;
-                }
+            }
                 // else if (PlayerCollision.hitFinishLine)
                 // {
                 //     DisplayMessage(gameStatText, CollectMoreGemsMessage);
@@ -90,6 +109,7 @@ public class GameStatus : MonoBehaviour
                 //
                 // }
         }
+        
         if (winStat == true) {
             PauseGame("win");
         }
@@ -140,28 +160,44 @@ public class GameStatus : MonoBehaviour
     }
 
     public void PauseGame(string type) {
+        // unlock and unhide cursor
         Time.timeScale = 0.0f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
         if (type == "pause") {
-            DisplayMessage(gameStatText, "Game Paused");
-            DisplayMessage(gameOperText, "Resume");
+            //DisplayMessage(gameStatText, "Game Paused");
+            //DisplayMessage(gameOperText, "Resume");
             gameOperImage.gameObject.SetActive(true);
+            GamePaused.SetActive(true);
+            RestartButton.SetActive(true);
+            ResumeButton.SetActive(true);
+
         } else if (type == "lose") {
-            DisplayMessage(gameStatText, "Game Over!");
-            DisplayMessage(gameOperText, "Restart");
+            //DisplayMessage(gameStatText, "Game Over!");
+            //DisplayMessage(gameOperText, "Restart");
             gameOperImage.gameObject.SetActive(true);
+            YouLose.SetActive(true);
+            RestartButton.SetActive(true);
+        
         } else if (type == "win") {
-        Scene currentScene = SceneManager.GetActiveScene();
-                string sceneName = currentScene.name;
-                if (sceneName != "Level3") {
-            DisplayMessage(gameStatText, "Level Cleared!");
-            DisplayMessage(gameOperText, "Next Level");
-            gameOperImage.gameObject.SetActive(true);}
-            else {DisplayMessage(gameStatText, "You Win!");
-            DisplayMessage(gameOperText, "End");
-            gameOperImage.gameObject.SetActive(true);
+            Scene currentScene = SceneManager.GetActiveScene();
+            string sceneName = currentScene.name;
+            
+            if (sceneName != "Level 2") {
+                //DisplayMessage(gameStatText, "Level Cleared!");
+                //DisplayMessage(gameOperText, "Next Level");
+                gameOperImage.gameObject.SetActive(true);
+                YouWin.SetActive(true);
+                RestartButton.SetActive(true);
+                NextLevelButton.SetActive(true);
+            
+            } else {
+                //DisplayMessage(gameStatText, "You Win!");
+                //DisplayMessage(gameOperText, "End");
+                gameOperImage.gameObject.SetActive(true);
+                YouWin.SetActive(true);
+                RestartButton.SetActive(true);
             }
         }
     }
@@ -170,9 +206,16 @@ public class GameStatus : MonoBehaviour
         Time.timeScale = 1.0f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        gameStatText.text = "";
-        gameOperText.text = "";
+        //gameStatText.text = "";
+        //gameOperText.text = "";
+
         gameOperImage.gameObject.SetActive(false);
+        //GamePaused.SetActive(false);
+        YouWin.SetActive(false);
+        YouLose.SetActive(false);
+        ResumeButton.SetActive(false);
+        RestartButton.SetActive(false);
+        NextLevelButton.SetActive(false);
     }
 
     public void RestartGame() {
@@ -180,9 +223,17 @@ public class GameStatus : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         winStat = false;
-        gameStatText.text = "";
-        gameOperText.text = "";
+        //gameStatText.text = "";
+        //gameOperText.text = "";
+
         gameOperImage.gameObject.SetActive(false);
+        //GamePaused.SetActive(false);
+        YouWin.SetActive(false);
+        YouLose.SetActive(false);
+        ResumeButton.SetActive(false);
+        RestartButton.SetActive(false);
+        NextLevelButton.SetActive(false);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -214,8 +265,8 @@ public class GameStatus : MonoBehaviour
 
     public void DisplayStatus(string status)
     {
-        gameStatText.text = status;
-        StartCoroutine(ClearMessageAfterDelay(gameStatText, 1));
+        //gameStatText.text = status;
+        //StartCoroutine(ClearMessageAfterDelay(gameStatText, 1));
     }
 
     public void ClearMessage(Text textArea)
