@@ -125,32 +125,35 @@ public class PlayerCollision : MonoBehaviour
             }
         }
         else if (collision.collider.CompareTag("AddTenSec")) {
-            if (gameObject != null)
-                {Destroy(collision.collider.gameObject);}
+            if (gameObject != null) {
+                Destroy(collision.collider.gameObject);
+            }
             GetComponent<AudioSource>().clip = gem_collect;
             GetComponent<AudioSource>().Play();
 
-            GameObject gameUi = GameObject.Find("Game UI");
-            // UnityEngine.Component gameStatus  = gameUi.GetComponent("Game Status");
-            gameUi.BroadcastMessage("addTime", 10);
-            gameUi.BroadcastMessage("DisplayStatus", "+10 seconds");
+            GameObject GameStatus = GameObject.Find("GameStatus");
+            // UnityEngine.Component gameStatus  = GameStatus.GetComponent("Game Status");
+            GameStatus.BroadcastMessage("addTime", 10);
+            GameStatus.BroadcastMessage("DisplayStatus", "+10 seconds");
         }
 
         else if (collision.collider.CompareTag("AddFiveSec")) {
-            if (gameObject != null)
-                {Destroy(collision.collider.gameObject);}
+            if (gameObject != null) {
+                Destroy(collision.collider.gameObject);
+            }
             GetComponent<AudioSource>().clip = gem_collect;
             GetComponent<AudioSource>().Play();
 
-            GameObject gameUi = GameObject.Find("Game UI");
-            // UnityEngine.Component gameStatus  = gameUi.GetComponent("Game Status");
-            gameUi.BroadcastMessage("addTime", 5);
-            gameUi.BroadcastMessage("DisplayStatus", "+5 seconds");
+            GameObject GameStatus = GameObject.Find("GameStatus");
+            // UnityEngine.Component gameStatus  = GameStatus.GetComponent("Game Status");
+            GameStatus.BroadcastMessage("addTime", 5);
+            GameStatus.BroadcastMessage("DisplayStatus", "+5 seconds");
         }
 
         if (collision.collider.CompareTag("FinishLine")) {
-            if (scoreManager.GetScore() >= gameStatus.requiredScoreToWin)
-            {hitFinishLine = true;}
+            if (scoreManager.GetScore() >= gameStatus.requiredScoreToWin) {
+                hitFinishLine = true;
+            }
         }
     }
 }
