@@ -53,6 +53,10 @@ public class TextButton : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    public void MainMenu() {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     /*
     public void ResumeOrRestart() {
         Debug.Log("resume or restart?");

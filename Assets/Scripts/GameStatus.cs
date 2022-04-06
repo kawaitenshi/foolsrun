@@ -17,9 +17,11 @@ public class GameStatus : MonoBehaviour
     public GameObject GamePaused;
     public GameObject YouWin;
     public GameObject YouLose;
+    public GameObject LevelCleared;
     public GameObject ResumeButton;
     public GameObject RestartButton;
     public GameObject NextLevelButton;
+    public GameObject MainMenuButton;
 
     // text timer related
     public GameObject timeRemainingObj;
@@ -63,9 +65,11 @@ public class GameStatus : MonoBehaviour
         GamePaused.SetActive(false);
         YouWin.SetActive(false);
         YouLose.SetActive(false);
+        LevelCleared.SetActive(false);
         ResumeButton.SetActive(false);
         RestartButton.SetActive(false);
         NextLevelButton.SetActive(false);
+        MainMenuButton.SetActive(false);
 
         // get infomation of the current scene
         Scene currentScene = SceneManager.GetActiveScene();
@@ -115,6 +119,7 @@ public class GameStatus : MonoBehaviour
             PauseGame("pause");
         }
 
+        /*
         if (Input.GetKeyDown(KeyCode.R)) {
             if (timeLeft > 0 & winStat == false) {
                 ResumeGame();
@@ -122,6 +127,7 @@ public class GameStatus : MonoBehaviour
                 RestartGame();
             }
         }
+        */
     }
 
     /**
@@ -164,19 +170,21 @@ public class GameStatus : MonoBehaviour
         } else if (type == "lose") {
             YouLose.SetActive(true);
             RestartButton.SetActive(true);
+            MainMenuButton.SetActive(true);
         
         } else if (type == "win") {
             Scene currentScene = SceneManager.GetActiveScene();
             string sceneName = currentScene.name;
             
             if (sceneName != "Level 2") {
-                YouWin.SetActive(true);
+                LevelCleared.SetActive(true);
                 RestartButton.SetActive(true);
                 NextLevelButton.SetActive(true);
             
             } else {
                 YouWin.SetActive(true);
                 RestartButton.SetActive(true);
+                MainMenuButton.SetActive(true);
             }
         }
     }
@@ -192,9 +200,11 @@ public class GameStatus : MonoBehaviour
         GamePaused.SetActive(false);
         YouWin.SetActive(false);
         YouLose.SetActive(false);
+        LevelCleared.SetActive(false);
         ResumeButton.SetActive(false);
         RestartButton.SetActive(false);
         NextLevelButton.SetActive(false);
+        MainMenuButton.SetActive(false);
     }
 
     public void RestartGame() {
@@ -209,9 +219,11 @@ public class GameStatus : MonoBehaviour
         GamePaused.SetActive(false);
         YouWin.SetActive(false);
         YouLose.SetActive(false);
+        LevelCleared.SetActive(false);
         ResumeButton.SetActive(false);
         RestartButton.SetActive(false);
         NextLevelButton.SetActive(false);
+        MainMenuButton.SetActive(false);
 
         // reload scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
