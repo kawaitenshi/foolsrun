@@ -50,7 +50,7 @@ public class PlayerCollision : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collision) {
-        print($"collision occurred with {collision.collider.name}");
+        // Debug.Log($"collision occurred with {collision.collider.name}");
 
         if (collision.collider.CompareTag("Gem")) {
             GetComponent<AudioSource>().clip = gem_collect;
