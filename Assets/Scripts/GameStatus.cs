@@ -10,15 +10,10 @@ public class GameStatus : MonoBehaviour
 {
     public AudioClip short_time_left;
     private bool played_stl = false;
-
-    public GameObject timeRemainingObj;
-    public GameObject timeRemainingClockContents;
-    //public GameObject gameStatObj;
-    //public GameObject gameOperObj;
     public GameObject playerObj;
     public ScoreManager scoreManager;
-    public GameObject beginningInstructionsMessage;
 
+    // game status texts and buttons
     public GameObject GamePaused;
     public GameObject YouWin;
     public GameObject YouLose;
@@ -26,13 +21,13 @@ public class GameStatus : MonoBehaviour
     public GameObject RestartButton;
     public GameObject NextLevelButton;
 
+    // text timer related
+    public GameObject timeRemainingObj;
+    public GameObject timeRemainingClockContents;
     private Text timeRemainingText;
-    //private Text gameStatText;
-    //private Text gameOperText;
-    //private Image gameOperImage;
     private TextMeshProUGUI timeRemainingClockContentsText;
-    private Image beginningInstructionsImage;
 
+    // new timer UI related
     public float timeLeft = 90;
     public int requiredScoreToWin = 6;
     private float totalTime;
@@ -40,30 +35,20 @@ public class GameStatus : MonoBehaviour
     public Image fill; // Fill for the slider
     public bool winStat = false;
     private Rigidbody _rigidbody;
-
+    
+    // instructions for the game
+    private Image beginningInstructionsImage;
+    public GameObject beginningInstructionsMessage;
     private const string CollectMoreGemsMessage = "Collect more gems and come back!";
 
     // Start is called before the first frame update
     void Start() {
+        // set up objects
         timeRemainingText = timeRemainingObj.GetComponent<Text>();
-        //gameStatText = gameStatObj.GetComponent<Text>();
-        //gameOperText = gameOperObj.GetComponent<Text>();
-        //gameOperImage = gameOperObj.gameObject.GetComponentInParent<Image>();
         timeRemainingClockContentsText = timeRemainingClockContents.GetComponent<TextMeshProUGUI>();
         beginningInstructionsImage = beginningInstructionsMessage.GetComponent<Image>();
         timeRemainingText.text = "Time Remaining: " + timeLeft;
-
-        //gameStatText.text = "";
-        //gameOperText.text = "";
-        // hide all UI elements
-        //gameOperImage.gameObject.SetActive(false);
-        GamePaused.SetActive(false);
-        YouWin.SetActive(false);
-        YouLose.SetActive(false);
-        ResumeButton.SetActive(false);
-        RestartButton.SetActive(false);
-        NextLevelButton.SetActive(false);
-
+        
         // setup timer
         timeRemainingClockContentsText.text = formatTime(timeLeft);
         slider.value = 1f;
@@ -74,13 +59,22 @@ public class GameStatus : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        // get infomation of current scene
+        // hide all UI elements
+        GamePaused.SetActive(false);
+        YouWin.SetActive(false);
+        YouLose.SetActive(false);
+        ResumeButton.SetActive(false);
+        RestartButton.SetActive(false);
+        NextLevelButton.SetActive(false);
+
+        // get infomation of the current scene
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
-        if (sceneName == "MainScene") {
+        if (sceneName == "Tutorial") {
             StartCoroutine(FadeImageAfterDelay(beginningInstructionsImage, 3f));
         } else {
-            StartCoroutine(FadeImageAfterDelay(beginningInstructionsImage, 0f));
+            // StartCoroutine(FadeImageAfterDelay(beginningInstructionsImage, 0f));
+            beginningInstructionsImage.gameObject.SetActive(false);
         }
     }
 
@@ -104,12 +98,12 @@ public class GameStatus : MonoBehaviour
             if (PlayerCollision.hitFinishLine && scoreManager.GetScore() >= requiredScoreToWin) {
                 winStat = true;
             }
-                // else if (PlayerCollision.hitFinishLine)
-                // {
-                //     DisplayMessage(gameStatText, CollectMoreGemsMessage);
-                //     StartCoroutine(ClearMessageAfterDelay(gameStatText, 2));
-                //
-                // }
+            // else if (PlayerCollision.hitFinishLine)
+            // {
+            //     DisplayMessage(gameStatText, CollectMoreGemsMessage);
+            //     StartCoroutine(ClearMessageAfterDelay(gameStatText, 2));
+            //
+            // }
         }
         
         if (winStat == true) {
@@ -163,17 +157,11 @@ public class GameStatus : MonoBehaviour
         Cursor.visible = true;
 
         if (type == "pause") {
-            //DisplayMessage(gameStatText, "Game Paused");
-            //DisplayMessage(gameOperText, "Resume");
-            //gameOperImage.gameObject.SetActive(true);
             GamePaused.SetActive(true);
             RestartButton.SetActive(true);
             ResumeButton.SetActive(true);
 
         } else if (type == "lose") {
-            //DisplayMessage(gameStatText, "Game Over!");
-            //DisplayMessage(gameOperText, "Restart");
-            //gameOperImage.gameObject.SetActive(true);
             YouLose.SetActive(true);
             RestartButton.SetActive(true);
         
@@ -182,17 +170,11 @@ public class GameStatus : MonoBehaviour
             string sceneName = currentScene.name;
             
             if (sceneName != "Level 2") {
-                //DisplayMessage(gameStatText, "Level Cleared!");
-                //DisplayMessage(gameOperText, "Next Level");
-                //gameOperImage.gameObject.SetActive(true);
                 YouWin.SetActive(true);
                 RestartButton.SetActive(true);
                 NextLevelButton.SetActive(true);
             
             } else {
-                //DisplayMessage(gameStatText, "You Win!");
-                //DisplayMessage(gameOperText, "End");
-                //gameOperImage.gameObject.SetActive(true);
                 YouWin.SetActive(true);
                 RestartButton.SetActive(true);
             }
@@ -201,12 +183,12 @@ public class GameStatus : MonoBehaviour
 
     public void ResumeGame() {
         Time.timeScale = 1.0f;
+
+        // lock and hide cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        //gameStatText.text = "";
-        //gameOperText.text = "";
-
-        //gameOperImage.gameObject.SetActive(false);
+        
+        // hide all UI elements
         GamePaused.SetActive(false);
         YouWin.SetActive(false);
         YouLose.SetActive(false);
@@ -217,13 +199,13 @@ public class GameStatus : MonoBehaviour
 
     public void RestartGame() {
         Time.timeScale = 1.0f;
+        winStat = false;
+
+        // lock and hide cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        winStat = false;
-        //gameStatText.text = "";
-        //gameOperText.text = "";
-
-        //gameOperImage.gameObject.SetActive(false);
+        
+        // hide all UI elements
         GamePaused.SetActive(false);
         YouWin.SetActive(false);
         YouLose.SetActive(false);
@@ -231,6 +213,7 @@ public class GameStatus : MonoBehaviour
         RestartButton.SetActive(false);
         NextLevelButton.SetActive(false);
 
+        // reload scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -252,8 +235,7 @@ public class GameStatus : MonoBehaviour
             textArea.text = "End";
         } else if (message == "Restart") {
             textArea.text = "Restart";
-        } else if (message == CollectMoreGemsMessage)
-        {
+        } else if (message == CollectMoreGemsMessage) {
             textArea.text = CollectMoreGemsMessage;
         } else {
             textArea.text = "ERROR: Unknown input!";
@@ -261,8 +243,8 @@ public class GameStatus : MonoBehaviour
     }
 
     public void DisplayStatus(string status) {
-        //gameStatText.text = status;
-        //StartCoroutine(ClearMessageAfterDelay(gameStatText, 1));
+        // gameStatText.text = status;
+        // StartCoroutine(ClearMessageAfterDelay(gameStatText, 1));
     }
 
     public void ClearMessage(Text textArea) {
