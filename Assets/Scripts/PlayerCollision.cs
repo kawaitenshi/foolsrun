@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 public class PlayerCollision : MonoBehaviour
@@ -151,8 +153,19 @@ public class PlayerCollision : MonoBehaviour
         }
 
         if (collision.collider.CompareTag("FinishLine")) {
-            if (scoreManager.GetScore() >= gameStatus.requiredScoreToWin) {
-                hitFinishLine = true;
+            Scene currentScene = SceneManager.GetActiveScene();
+            string sceneName = currentScene.name;
+        
+            if (sceneName == "Tutorial") {
+                Debug.Log(gameStatus.requiredScoreToWinTut);
+                Debug.Log(scoreManager.GetScore());
+                if (scoreManager.GetScore() >= gameStatus.requiredScoreToWinTut) {
+                    hitFinishLine = true;
+                }
+            } else {
+                if (scoreManager.GetScore() >= gameStatus.requiredScoreToWin) {
+                    hitFinishLine = true;
+                }
             }
         }
     }

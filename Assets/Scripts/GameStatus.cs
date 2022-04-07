@@ -32,6 +32,7 @@ public class GameStatus : MonoBehaviour
     // new timer UI related
     public float timeLeft = 90;
     public int requiredScoreToWin = 6;
+    public int requiredScoreToWinTut = 3;
     private float totalTime;
     public Slider slider; // Slider for time
     public Image fill; // Fill for the slider
@@ -99,7 +100,7 @@ public class GameStatus : MonoBehaviour
         // Check if player has reached end of the maze
         for (int i=0; i<playerObj.transform.childCount; i++) {
             GameObject childObj = playerObj.transform.GetChild(i).gameObject;
-            if (PlayerCollision.hitFinishLine && scoreManager.GetScore() >= requiredScoreToWin) {
+            if (PlayerCollision.hitFinishLine) {// && scoreManager.GetScore() >= requiredScoreToWin) {
                 winStat = true;
             }
             // else if (PlayerCollision.hitFinishLine)
