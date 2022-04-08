@@ -36,7 +36,7 @@ public class GameStatus : MonoBehaviour
     private TextMeshProUGUI timeRemainingClockContentsText;
 
     // new timer UI related
-    public float timeLeft = 90;
+    public float timeLeft = 10;
     private float totalTime;
     public Slider slider; // Slider for time
     public Image fill; // Fill for the slider
@@ -89,6 +89,7 @@ public class GameStatus : MonoBehaviour
     // Update is called once per frame
     void Update() {
         // Check remaining time of this round
+        /*
         if (timeLeft > 0) {
             if (timeLeft < 11 && !played_stl) {
                 GetComponent<AudioSource>().clip = short_time_left;
@@ -100,6 +101,7 @@ public class GameStatus : MonoBehaviour
         } else {
             PauseGame("lose");
         }
+        */
 
         timeCost += Time.deltaTime;
         // Debug.Log(timeCost);
