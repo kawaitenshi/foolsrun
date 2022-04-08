@@ -5309,6 +5309,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 5c95e712464c3674b875b28c0ebadfda, type: 2}
+    - target: {fileID: 4410946830982824392, guid: afdc1811367b91149927e3502d820cad, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7011496928260626734, guid: afdc1811367b91149927e3502d820cad, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.32
@@ -5317,7 +5321,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gem_1 (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4410946830982824392, guid: afdc1811367b91149927e3502d820cad, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: afdc1811367b91149927e3502d820cad, type: 3}
 --- !u!4 &67439609 stripped
 Transform:
@@ -62736,6 +62741,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 5c95e712464c3674b875b28c0ebadfda, type: 2}
+    - target: {fileID: 4410946830982824392, guid: afdc1811367b91149927e3502d820cad, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7011496928260626734, guid: afdc1811367b91149927e3502d820cad, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.29
@@ -62744,7 +62753,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gem_1 (6)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4410946830982824392, guid: afdc1811367b91149927e3502d820cad, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: afdc1811367b91149927e3502d820cad, type: 3}
 --- !u!1 &1678448700
 GameObject:
@@ -64590,11 +64600,16 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 5c95e712464c3674b875b28c0ebadfda, type: 2}
+    - target: {fileID: 4410946830982824392, guid: afdc1811367b91149927e3502d820cad, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7084603008094818959, guid: afdc1811367b91149927e3502d820cad, type: 3}
       propertyPath: m_Name
       value: Gem_1 (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4410946830982824392, guid: afdc1811367b91149927e3502d820cad, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: afdc1811367b91149927e3502d820cad, type: 3}
 --- !u!4 &1811775784 stripped
 Transform:

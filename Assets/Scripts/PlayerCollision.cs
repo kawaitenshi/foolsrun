@@ -45,9 +45,12 @@ public class PlayerCollision : MonoBehaviour
         // Debug.Log($"collision occurred with {collision.collider.name}");
 
         if (collision.collider.CompareTag("Gem")) {
-            Debug.Log("Player gem collision happened");
             GetComponent<AudioSource>().clip = gem_collect;
             GetComponent<AudioSource>().Play();
+            if (gameObject != null) {
+                Destroy(collision.collider.gameObject);
+            }
+            scoreManager.UpdateScore();
 
         } else if (collision.collider.CompareTag("ChickenPotion")) {
             collision.collider.gameObject.GetComponent<potionCollision>().Explode();
@@ -118,17 +121,14 @@ public class PlayerCollision : MonoBehaviour
             }
         
         } else if (collision.collider.CompareTag("AddTenSec")) {
-            Debug.Log("Player clock collision happened");
             if (gameObject != null) {
                 Destroy(collision.collider.gameObject);
             }
             GetComponent<AudioSource>().clip = gem_collect;
             GetComponent<AudioSource>().Play();
 
-            // UnityEngine.Component gameStatus  = GameStatus.GetComponent("Game Status");
             gameStatus.BroadcastMessage("deduceTime", 10);
             gameStatus.BroadcastMessage("DisplayStatus", "-10 seconds");
-            gameStatus.deduceTime(10f);
         
         } else if (collision.collider.CompareTag("AddFiveSec")) {
             if (gameObject != null) {
@@ -137,10 +137,8 @@ public class PlayerCollision : MonoBehaviour
             GetComponent<AudioSource>().clip = gem_collect;
             GetComponent<AudioSource>().Play();
 
-            // UnityEngine.Component gameStatus  = GameStatus.GetComponent("Game Status");
             gameStatus.BroadcastMessage("deduceTime", 5);
             gameStatus.BroadcastMessage("DisplayStatus", "-5 seconds");
-            gameStatus.deduceTime(5f);
         }
 
         if (collision.collider.CompareTag("FinishLine")) {

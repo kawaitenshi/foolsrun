@@ -13,10 +13,10 @@ public class GemHit : MonoBehaviour
     private void OnCollisionEnter(Collision collision) {
         if (collision.collider.tag == "Player") {
             // Debug.Log("Player gem collision happened");
-            if (gameObject != null) {
-                Destroy(this.gameObject);
-            }
-            ScoreMan.UpdateScore();
+            //if (gameObject != null) {
+            //    Destroy(this.gameObject);
+            //}
+            //ScoreMan.UpdateScore();
         }
     }
 }
