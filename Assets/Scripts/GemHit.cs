@@ -6,18 +6,16 @@ public class GemHit : MonoBehaviour
 {
     public ScoreManager ScoreMan;
 
-    private void Start()
-    {
+    private void Start() {
         ScoreMan = FindObjectOfType<ScoreManager>();
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.tag == "Player")
-        {
-          print("Player gem collision happened");
-          if (gameObject != null)
-            {Destroy(this.gameObject);}
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.collider.tag == "Player") {
+            // Debug.Log("Player gem collision happened");
+            if (gameObject != null) {
+                Destroy(this.gameObject);
+            }
             ScoreMan.UpdateScore();
         }
     }

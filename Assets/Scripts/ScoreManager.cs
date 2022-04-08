@@ -8,21 +8,19 @@ public class ScoreManager : MonoBehaviour
 
     public UpdateScoreInfo scInfo;
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         scInfo = GameObject.FindObjectOfType<UpdateScoreInfo>();
     }
 
-    public void UpdateScore()
-    {
+    public void UpdateScore() {
         playerScore += 1;
         if (playerScore <= 6) {
-        scInfo.UpdateScoreImage(playerScore - 1);}
+            scInfo.UpdateScoreImage(playerScore - 1);
+        }
         //scInfo.UpdateScoreText(playerScore);
     }
 
-    public int GetScore()
-    {
+    public int GetScore() {
         return playerScore;
     }
 }
