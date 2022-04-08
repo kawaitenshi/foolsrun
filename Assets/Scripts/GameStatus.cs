@@ -8,10 +8,16 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(AudioSource))]
 public class GameStatus : MonoBehaviour
 {
+    // audio related
     public AudioClip short_time_left;
     private bool played_stl = false;
     public GameObject playerObj;
+
+    // score manager
     public ScoreManager scoreManager;
+    public int requiredScoreToWin = 6;
+    public int requiredScoreToWinTut = 3;
+    public bool winStat = false;
 
     // game status texts and buttons
     public GameObject GamePaused;
@@ -30,14 +36,12 @@ public class GameStatus : MonoBehaviour
     private TextMeshProUGUI timeRemainingClockContentsText;
 
     // new timer UI related
-    public float timeLeft = 90;
-    public int requiredScoreToWin = 6;
-    public int requiredScoreToWinTut = 3;
+    public float timeLeft = 10;
     private float totalTime;
     public Slider slider; // Slider for time
     public Image fill; // Fill for the slider
-    public bool winStat = false;
-    private Rigidbody _rigidbody;
+
+    private float timeCost = 0;
     
     // instructions for the game
     private Image beginningInstructionsImage;
@@ -72,13 +76,12 @@ public class GameStatus : MonoBehaviour
         NextLevelButton.SetActive(false);
         MainMenuButton.SetActive(false);
 
-        // get infomation of the current scene
+        // show instruction only in tutorial
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
         if (sceneName == "Tutorial") {
             StartCoroutine(FadeImageAfterDelay(beginningInstructionsImage, 3f));
         } else {
-            // StartCoroutine(FadeImageAfterDelay(beginningInstructionsImage, 0f));
             beginningInstructionsImage.gameObject.SetActive(false);
         }
     }
@@ -86,49 +89,41 @@ public class GameStatus : MonoBehaviour
     // Update is called once per frame
     void Update() {
         // Check remaining time of this round
+        /*
         if (timeLeft > 0) {
-            if (timeLeft < 11 && !played_stl) {GetComponent<AudioSource>().clip = short_time_left;
-                   GetComponent<AudioSource>().Play();
-                   played_stl = true;
-                   fill.color = Color.red;}
+            if (timeLeft < 11 && !played_stl) {
+                GetComponent<AudioSource>().clip = short_time_left;
+                GetComponent<AudioSource>().Play();
+                played_stl = true;
+                fill.color = Color.red;
+            }
             timeLeft -= Time.deltaTime;
         } else {
             PauseGame("lose");
         }
-        DisplayTime(timeLeft);
+        */
+
+        timeCost += Time.deltaTime;
+        // Debug.Log(timeCost);
+        DisplayTime(timeCost, "count up");
 
         // Check if player has reached end of the maze
         for (int i=0; i<playerObj.transform.childCount; i++) {
             GameObject childObj = playerObj.transform.GetChild(i).gameObject;
-            if (PlayerCollision.hitFinishLine) {// && scoreManager.GetScore() >= requiredScoreToWin) {
+            if (PlayerCollision.hitFinishLine) { // score being checked already in PlayerCollision
                 winStat = true;
             }
-            // else if (PlayerCollision.hitFinishLine)
-            // {
-            //     DisplayMessage(gameStatText, CollectMoreGemsMessage);
-            //     StartCoroutine(ClearMessageAfterDelay(gameStatText, 2));
-            //
-            // }
         }
-        
+
+        // if win, pause game        
         if (winStat == true) {
             PauseGame("win");
         }
 
-        // Detect input about pause and resume
+        // Detect input about pause game manually
         if (Input.GetKeyDown(KeyCode.P)) {
             PauseGame("pause");
         }
-
-        /*
-        if (Input.GetKeyDown(KeyCode.R)) {
-            if (timeLeft > 0 & winStat == false) {
-                ResumeGame();
-            } else {
-                RestartGame();
-            }
-        }
-        */
     }
 
     /**
@@ -136,9 +131,9 @@ public class GameStatus : MonoBehaviour
      */
     string formatTime(float secondsLeft) {
         if (secondsLeft <= 0) {
-            return "0:00";
+            return "00:00";
         }
-        return $"{(int) (secondsLeft / 60)}:{padInt((int)(secondsLeft % 60))}";
+        return $"{padInt((int)(secondsLeft / 60))}:{padInt((int)(secondsLeft % 60))}";
     }
 
     public string padInt(int time) {
@@ -148,13 +143,31 @@ public class GameStatus : MonoBehaviour
 
         return $"{time}";
     }
-    void DisplayTime(float time) {
-        slider.value = timeLeft / totalTime;
-        timeRemainingClockContentsText.text = formatTime(timeLeft);
+    void DisplayTime(float time, string mode) {
+        if (mode == "count down") {
+            slider.value = time / totalTime;
+            timeRemainingClockContentsText.text = formatTime(time);
+        } else if (mode == "count up") {
+            timeRemainingClockContentsText.text = formatTime(time);
+        }
     }
 
     public void addTime(float time) {
-        timeLeft += time;
+        if (timeLeft + time <= totalTime) {
+            timeLeft += time;
+        } else {
+            timeLeft = totalTime;
+        }
+    }
+
+    public void deduceTime(float time) {
+        if (timeCost - time >= 0f) {
+            timeCost -= time;
+            Debug.Log("not 0");
+        } else {
+            timeCost = 0f;
+            Debug.Log("yes 0");
+        }
     }
 
     public void PauseGame(string type) {

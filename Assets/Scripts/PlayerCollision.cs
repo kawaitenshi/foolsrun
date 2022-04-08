@@ -39,16 +39,6 @@ public class PlayerCollision : MonoBehaviour
         } else {
             inHallway = false;
         }
-
-        /*
-        Color rayColor;
-        if (hitHallway) {
-            rayColor = Color.green;
-        } else {
-            rayColor = Color.red;
-        }
-        Debug.DrawRay(transform.position, Vector3.down * 100f, rayColor);
-        */
     }
 
     void OnCollisionEnter(Collision collision) {
@@ -57,6 +47,10 @@ public class PlayerCollision : MonoBehaviour
         if (collision.collider.CompareTag("Gem")) {
             GetComponent<AudioSource>().clip = gem_collect;
             GetComponent<AudioSource>().Play();
+            if (gameObject != null) {
+                Destroy(collision.collider.gameObject);
+            }
+            scoreManager.UpdateScore();
 
         } else if (collision.collider.CompareTag("ChickenPotion")) {
             collision.collider.gameObject.GetComponent<potionCollision>().Explode();
@@ -125,31 +119,26 @@ public class PlayerCollision : MonoBehaviour
                 character3.SetActive(true);
                 camera.GetComponent<CameraController>().PlayerTransform = character3.transform.Find("Focus");
             }
-        }
-        else if (collision.collider.CompareTag("AddTenSec")) {
+        
+        } else if (collision.collider.CompareTag("AddTenSec")) {
             if (gameObject != null) {
                 Destroy(collision.collider.gameObject);
             }
             GetComponent<AudioSource>().clip = gem_collect;
             GetComponent<AudioSource>().Play();
 
-            GameObject GameStatus = GameObject.Find("GameStatus");
-            // UnityEngine.Component gameStatus  = GameStatus.GetComponent("Game Status");
-            GameStatus.BroadcastMessage("addTime", 10);
-            GameStatus.BroadcastMessage("DisplayStatus", "+10 seconds");
-        }
-
-        else if (collision.collider.CompareTag("AddFiveSec")) {
+            gameStatus.BroadcastMessage("deduceTime", 10);
+            gameStatus.BroadcastMessage("DisplayStatus", "-10 seconds");
+        
+        } else if (collision.collider.CompareTag("AddFiveSec")) {
             if (gameObject != null) {
                 Destroy(collision.collider.gameObject);
             }
             GetComponent<AudioSource>().clip = gem_collect;
             GetComponent<AudioSource>().Play();
 
-            GameObject GameStatus = GameObject.Find("GameStatus");
-            // UnityEngine.Component gameStatus  = GameStatus.GetComponent("Game Status");
-            GameStatus.BroadcastMessage("addTime", 5);
-            GameStatus.BroadcastMessage("DisplayStatus", "+5 seconds");
+            gameStatus.BroadcastMessage("deduceTime", 5);
+            gameStatus.BroadcastMessage("DisplayStatus", "-5 seconds");
         }
 
         if (collision.collider.CompareTag("FinishLine")) {
