@@ -20,6 +20,9 @@ public class PlayerCollision : MonoBehaviour
     public MoveChicken moveChicken;
     public MoveDragon moveDragon;
 
+    public GameObject instructions;
+    private Tutorial tutorial;
+
     public AudioClip gem_collect;
     public AudioClip chicken_squawk;
     public AudioClip potion_hit;
@@ -27,6 +30,12 @@ public class PlayerCollision : MonoBehaviour
     void Start() {
         hitFinishLine = false;
         inHallway = false;
+
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName == "Tutorial") {
+            tutorial = instructions.GetComponent<Tutorial>();
+        }
     }
 
     void Update() {
@@ -146,8 +155,6 @@ public class PlayerCollision : MonoBehaviour
             string sceneName = currentScene.name;
         
             if (sceneName == "Tutorial") {
-                Debug.Log(gameStatus.requiredScoreToWinTut);
-                Debug.Log(scoreManager.GetScore());
                 if (scoreManager.GetScore() >= gameStatus.requiredScoreToWinTut) {
                     hitFinishLine = true;
                 }
@@ -156,6 +163,11 @@ public class PlayerCollision : MonoBehaviour
                     hitFinishLine = true;
                 }
             }
+        }
+
+        if (collision.collider.CompareTag("NoteLine")) {
+            tutorial.PopIns(collision.collider.gameObject.name);
+            Destroy(collision.collider.gameObject);
         }
     }
 }

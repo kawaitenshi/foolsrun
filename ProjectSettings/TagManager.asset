@@ -14,6 +14,7 @@ TagManager:
   - PowerUp
   - AddTenSec
   - AddFiveSec
+  - NoteLine
   layers:
   - Default
   - TransparentFX

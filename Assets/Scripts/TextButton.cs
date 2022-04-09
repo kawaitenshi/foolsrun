@@ -10,13 +10,21 @@ using UnityEngine.SceneManagement;
 public class TextButton : MonoBehaviour, IPointerClickHandler
 {
     // add callbacks in the inspector like for buttons
-    public GameObject statusObj;
     public UnityEvent onClick;
+    public GameObject statusObj;
     private GameStatus gameStatus;
+    public GameObject instructions;
+    private Tutorial tutorial;
 
     private void Start()
     {
         gameStatus = statusObj.GetComponent<GameStatus>();
+        
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName == "Tutorial") {
+            tutorial = instructions.GetComponent<Tutorial>();
+        }
     }
 
     public void OnPointerClick(PointerEventData pointerEventData)
@@ -55,5 +63,9 @@ public class TextButton : MonoBehaviour, IPointerClickHandler
 
     public void MainMenu() {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void NextIns() {
+        tutorial.NextIns();
     }
 }
