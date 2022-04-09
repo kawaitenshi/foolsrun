@@ -38,10 +38,12 @@ public class GameStatus : MonoBehaviour
     // new timer UI related
     public float timeLeft = 10;
     private float totalTime;
+    private float timeCost = 0;
     public Slider slider; // Slider for time
     public Image fill; // Fill for the slider
 
-    private float timeCost = 0;
+    public GameObject statObj;
+    public Text statText;
     
     // instructions for the game
     private Image beginningInstructionsImage;
@@ -55,6 +57,7 @@ public class GameStatus : MonoBehaviour
         timeRemainingClockContentsText = timeRemainingClockContents.GetComponent<TextMeshProUGUI>();
         beginningInstructionsImage = beginningInstructionsMessage.GetComponent<Image>();
         timeRemainingText.text = "Time Remaining: " + timeLeft;
+        statText = statObj.GetComponent<Text>();
         
         // setup timer
         timeRemainingClockContentsText.text = formatTime(timeLeft);
@@ -75,6 +78,7 @@ public class GameStatus : MonoBehaviour
         RestartButton.SetActive(false);
         NextLevelButton.SetActive(false);
         MainMenuButton.SetActive(false);
+        statObj.SetActive(false);
 
         // show instruction only in tutorial
         Scene currentScene = SceneManager.GetActiveScene();
@@ -187,6 +191,9 @@ public class GameStatus : MonoBehaviour
             MainMenuButton.SetActive(true);
         
         } else if (type == "win") {
+            statText.text = "Time cost: " + formatTime(timeCost);
+            statObj.SetActive(true);
+
             Scene currentScene = SceneManager.GetActiveScene();
             string sceneName = currentScene.name;
             
@@ -219,6 +226,7 @@ public class GameStatus : MonoBehaviour
         RestartButton.SetActive(false);
         NextLevelButton.SetActive(false);
         MainMenuButton.SetActive(false);
+        statObj.SetActive(false);
     }
 
     public void RestartGame() {
@@ -238,6 +246,7 @@ public class GameStatus : MonoBehaviour
         RestartButton.SetActive(false);
         NextLevelButton.SetActive(false);
         MainMenuButton.SetActive(false);
+        statObj.SetActive(false);
 
         // reload scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
