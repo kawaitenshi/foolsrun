@@ -5139,7 +5139,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cc877c7432c54b64d8dc691fc26af89f, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc877c7432c54b64d8dc691fc26af89f, type: 3}
       propertyPath: m_LocalScale.x
@@ -5445,7 +5445,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh294672
+  m_Name: pb_Mesh230350
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5967,7 +5967,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh295154
+  m_Name: pb_Mesh230862
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7119,7 +7119,7 @@ Transform:
   m_LocalScale: {x: 120, y: 120, z: 120}
   m_Children: []
   m_Father: {fileID: 395028717}
-  m_RootOrder: 6
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &229560255
 MeshRenderer:
@@ -17043,6 +17043,7 @@ GameObject:
   - component: {fileID: 264319904}
   - component: {fileID: 264319906}
   - component: {fileID: 264319905}
+  - component: {fileID: 264319907}
   m_Layer: 0
   m_Name: potion_bottle13
   m_TagString: Untagged
@@ -17113,6 +17114,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264319903}
   m_Mesh: {fileID: 832617376759882570, guid: 2ac2a68ed680c394c89d93c078b9d335, type: 3}
+--- !u!65 &264319907
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264319903}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.004296975, y: 0.0065609124, z: 0.0042969706}
+  m_Center: {x: -0.0000000045401976, y: 0.0034155296, z: 3.4924597e-10}
 --- !u!1 &271155384
 GameObject:
   m_ObjectHideFlags: 0
@@ -17401,6 +17415,7 @@ GameObject:
   - component: {fileID: 299061753}
   - component: {fileID: 299061755}
   - component: {fileID: 299061754}
+  - component: {fileID: 299061756}
   m_Layer: 0
   m_Name: potion_bottle_5
   m_TagString: Untagged
@@ -17471,6 +17486,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299061752}
   m_Mesh: {fileID: 3149967387259330516, guid: 2ac2a68ed680c394c89d93c078b9d335, type: 3}
+--- !u!65 &299061756
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299061752}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.005822878, y: 0.0073311087, z: 0.005822859}
+  m_Center: {x: -0.000000045867637, y: 0.0034719068, z: 0.00000011292286}
 --- !u!1001 &299327723
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17806,7 +17834,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh294654
+  m_Name: pb_Mesh230332
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -18155,16 +18183,16 @@ Transform:
   - {fileID: 565327710}
   - {fileID: 366268147}
   - {fileID: 690842760}
+  - {fileID: 560007870}
+  - {fileID: 1825749335}
+  - {fileID: 698534101}
+  - {fileID: 1681300076}
   - {fileID: 854844865}
   - {fileID: 947459628}
   - {fileID: 229560254}
   - {fileID: 1255423523}
   - {fileID: 997185651}
   - {fileID: 1487681174}
-  - {fileID: 560007870}
-  - {fileID: 1825749335}
-  - {fileID: 698534101}
-  - {fileID: 1681300076}
   - {fileID: 468427141}
   - {fileID: 1103241737}
   - {fileID: 471154171}
@@ -18585,6 +18613,7 @@ GameObject:
   - component: {fileID: 468427141}
   - component: {fileID: 468427143}
   - component: {fileID: 468427142}
+  - component: {fileID: 468427144}
   m_Layer: 0
   m_Name: potion_bottle9
   m_TagString: Untagged
@@ -18655,6 +18684,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 468427140}
   m_Mesh: {fileID: 3731037715804599618, guid: 2ac2a68ed680c394c89d93c078b9d335, type: 3}
+--- !u!65 &468427144
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468427140}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.004296975, y: 0.004129238, z: 0.00429698}
+  m_Center: {x: -0.000000007566996, y: 0.0021496348, z: 0.00000001839362}
 --- !u!1 &471154170
 GameObject:
   m_ObjectHideFlags: 0
@@ -18666,6 +18708,7 @@ GameObject:
   - component: {fileID: 471154171}
   - component: {fileID: 471154173}
   - component: {fileID: 471154172}
+  - component: {fileID: 471154174}
   m_Layer: 0
   m_Name: potion_bottle11
   m_TagString: Untagged
@@ -18736,6 +18779,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 471154170}
   m_Mesh: {fileID: 8874795034565792805, guid: 2ac2a68ed680c394c89d93c078b9d335, type: 3}
+--- !u!65 &471154174
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471154170}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.002020197, y: 0.001941333, z: 0.0020202063}
+  m_Center: {x: -0.000000006344635, y: 0.0010106406, z: -0.000000003085006}
 --- !u!1 &477792319
 GameObject:
   m_ObjectHideFlags: 0
@@ -18898,7 +18954,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh295244
+  m_Name: pb_Mesh230952
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20004,7 +20060,7 @@ Transform:
   m_LocalScale: {x: 120, y: 120, z: 120}
   m_Children: []
   m_Father: {fileID: 395028717}
-  m_RootOrder: 10
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &560007871
 MeshRenderer:
@@ -26262,6 +26318,7 @@ GameObject:
   - component: {fileID: 689473279}
   - component: {fileID: 689473281}
   - component: {fileID: 689473280}
+  - component: {fileID: 689473282}
   m_Layer: 0
   m_Name: potion_bottle12
   m_TagString: Untagged
@@ -26332,6 +26389,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689473278}
   m_Mesh: {fileID: 1579911743600499690, guid: 2ac2a68ed680c394c89d93c078b9d335, type: 3}
+--- !u!65 &689473282
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689473278}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0057411194, y: 0.005517011, z: 0.0057411287}
+  m_Center: {x: -0.000000010244548, y: 0.002872098, z: 0.0000000017462298}
 --- !u!1 &690842759
 GameObject:
   m_ObjectHideFlags: 0
@@ -26557,7 +26627,7 @@ Transform:
   m_LocalScale: {x: 120, y: 120, z: 120}
   m_Children: []
   m_Father: {fileID: 395028717}
-  m_RootOrder: 12
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &698534102
 MeshRenderer:
@@ -31862,7 +31932,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh294962
+  m_Name: pb_Mesh230660
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -32801,7 +32871,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh295066
+  m_Name: pb_Mesh230764
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -33400,7 +33470,7 @@ Transform:
   m_LocalScale: {x: 120, y: 120, z: 120}
   m_Children: []
   m_Father: {fileID: 395028717}
-  m_RootOrder: 4
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &854844866
 MeshRenderer:
@@ -33560,8 +33630,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.01516635, y: 0.0019695617, z: 0.018229732}
-  m_Center: {x: -0.000023311119, y: -0.0009880154, z: -0.000030124567}
+  m_Size: {x: 0.022942644, y: 0.0067761694, z: 0.018229732}
+  m_Center: {x: -0.0039114463, y: 0.0014152875, z: -0.000030124591}
 --- !u!4 &874826543 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1c1517ad09002674e96dc612ff1dec76, type: 3}
@@ -35314,7 +35384,7 @@ Transform:
   m_LocalScale: {x: 120, y: 120, z: 120}
   m_Children: []
   m_Father: {fileID: 395028717}
-  m_RootOrder: 5
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &947459629
 MeshRenderer:
@@ -35970,7 +36040,7 @@ Transform:
   m_LocalScale: {x: 120, y: 120, z: 120}
   m_Children: []
   m_Father: {fileID: 395028717}
-  m_RootOrder: 8
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &997185652
 MeshRenderer:
@@ -37338,7 +37408,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh294572
+  m_Name: pb_Mesh230250
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -37588,6 +37658,7 @@ GameObject:
   - component: {fileID: 1103241737}
   - component: {fileID: 1103241739}
   - component: {fileID: 1103241738}
+  - component: {fileID: 1103241740}
   m_Layer: 0
   m_Name: potion_bottle10
   m_TagString: Untagged
@@ -37658,13 +37729,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1103241736}
   m_Mesh: {fileID: -8552191691736492174, guid: 2ac2a68ed680c394c89d93c078b9d335, type: 3}
+--- !u!65 &1103241740
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103241736}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0057411194, y: 0.008765922, z: 0.0057411287}
+  m_Center: {x: -0.0000000031432137, y: 0.004563443, z: 0.000000014901161}
 --- !u!43 &1128696025
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh295636
+  m_Name: pb_Mesh231344
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -39219,7 +39303,7 @@ Transform:
   m_LocalScale: {x: 120, y: 120, z: 120}
   m_Children: []
   m_Father: {fileID: 395028717}
-  m_RootOrder: 7
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1255423524
 MeshRenderer:
@@ -45786,7 +45870,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh294456
+  m_Name: pb_Mesh230124
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -46774,7 +46858,7 @@ Transform:
   m_LocalScale: {x: 120, y: 120, z: 120}
   m_Children: []
   m_Father: {fileID: 395028717}
-  m_RootOrder: 9
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1487681175
 MeshRenderer:
@@ -48047,7 +48131,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh294896
+  m_Name: pb_Mesh230584
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -63244,7 +63328,7 @@ Transform:
   m_LocalScale: {x: 120, y: 120, z: 120}
   m_Children: []
   m_Father: {fileID: 395028717}
-  m_RootOrder: 13
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1681300077
 MeshRenderer:
@@ -63711,6 +63795,7 @@ GameObject:
   - component: {fileID: 1721921611}
   - component: {fileID: 1721921613}
   - component: {fileID: 1721921612}
+  - component: {fileID: 1721921614}
   m_Layer: 0
   m_Name: potion_bottle14
   m_TagString: Untagged
@@ -63781,6 +63866,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1721921610}
   m_Mesh: {fileID: 8867684115659658162, guid: 2ac2a68ed680c394c89d93c078b9d335, type: 3}
+--- !u!65 &1721921614
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721921610}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0026991558, y: 0.002593794, z: 0.0026991558}
+  m_Center: {x: -0.000000007625204, y: 0.0013503036, z: 0.000000016123522}
 --- !u!1001 &1723527466
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65105,7 +65203,7 @@ Transform:
   m_LocalScale: {x: 120, y: 120, z: 120}
   m_Children: []
   m_Father: {fileID: 395028717}
-  m_RootOrder: 11
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1825749336
 MeshRenderer:
@@ -65444,7 +65542,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh294328
+  m_Name: pb_Mesh229996
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -65810,7 +65908,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh295814
+  m_Name: pb_Mesh231522
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -66689,6 +66787,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 84feb05cc45707f46813fd4a81d34d7d, type: 3}
   m_PrefabInstance: {fileID: 1985375721}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1985375723 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 84feb05cc45707f46813fd4a81d34d7d, type: 3}
+  m_PrefabInstance: {fileID: 1985375721}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1985375724
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985375723}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0466198, y: 0.007489313, z: 0.04661973}
+  m_Center: {x: 0.00018693245, y: 0.0028952486, z: -0.00020074524}
 --- !u!1001 &1995274421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67380,6 +67496,7 @@ GameObject:
   - component: {fileID: 2046179452}
   - component: {fileID: 2046179454}
   - component: {fileID: 2046179453}
+  - component: {fileID: 2046179455}
   m_Layer: 0
   m_Name: potion_bottle_6
   m_TagString: Untagged
@@ -67450,6 +67567,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046179451}
   m_Mesh: {fileID: -7251199555231756814, guid: 2ac2a68ed680c394c89d93c078b9d335, type: 3}
+--- !u!65 &2046179455
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046179451}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0077798697, y: 0.009794978, z: 0.0077798367}
+  m_Center: {x: -0.00000006216578, y: 0.004638762, z: 0.00000013166573}
 --- !u!1 &2049055916
 GameObject:
   m_ObjectHideFlags: 0
