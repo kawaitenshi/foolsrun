@@ -113,7 +113,7 @@ public class CameraController : MonoBehaviour
 
         // there's some obstruction between player and camera
         if (Physics.Raycast(PlayerTransform.position, this.transform.position - PlayerTransform.position, out hit, defaultDistance)) {
-            if (hit.collider.gameObject.tag != "Player" && hit.collider.gameObject.tag != "FinishLine") {
+            if (hit.collider.gameObject.tag != "Player" && hit.collider.gameObject.tag != "FinishLine" && hit.collider.gameObject.tag != "NoteLine") {
                 Obstruction = hit.transform;
                 // set obstructing object to transparent (need to find the right render or this won't work) (may not need at all)
                 // Obstruction.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
