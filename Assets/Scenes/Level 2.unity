@@ -21988,17 +21988,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: RotatingClock
       objectReference: {fileID: 0}
+    - target: {fileID: 116451556749592119, guid: e1255fd0d6e467c4eb2530cdf518164b, type: 3}
+      propertyPath: m_TagString
+      value: AddTenSec
+      objectReference: {fileID: 0}
+    - target: {fileID: 7299832869070315980, guid: e1255fd0d6e467c4eb2530cdf518164b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7551184913246776567, guid: e1255fd0d6e467c4eb2530cdf518164b, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7551184913246776567, guid: e1255fd0d6e467c4eb2530cdf518164b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.68
+      value: -10.05
       objectReference: {fileID: 0}
     - target: {fileID: 7551184913246776567, guid: e1255fd0d6e467c4eb2530cdf518164b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7551184913246776567, guid: e1255fd0d6e467c4eb2530cdf518164b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -29593,6 +29601,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: RotatingClock (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 116451556749592119, guid: e1255fd0d6e467c4eb2530cdf518164b, type: 3}
+      propertyPath: m_TagString
+      value: AddTenSec
+      objectReference: {fileID: 0}
+    - target: {fileID: 7299832869070315980, guid: e1255fd0d6e467c4eb2530cdf518164b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7551184913246776567, guid: e1255fd0d6e467c4eb2530cdf518164b, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -29603,11 +29619,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7551184913246776567, guid: e1255fd0d6e467c4eb2530cdf518164b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.76
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7551184913246776567, guid: e1255fd0d6e467c4eb2530cdf518164b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -56
+      value: 13.14
       objectReference: {fileID: 0}
     - target: {fileID: 7551184913246776567, guid: e1255fd0d6e467c4eb2530cdf518164b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -42938,6 +42954,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: RotatingClock (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 116451556749592119, guid: e1255fd0d6e467c4eb2530cdf518164b, type: 3}
+      propertyPath: m_TagString
+      value: AddTenSec
+      objectReference: {fileID: 0}
+    - target: {fileID: 7299832869070315980, guid: e1255fd0d6e467c4eb2530cdf518164b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7551184913246776567, guid: e1255fd0d6e467c4eb2530cdf518164b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -42948,11 +42972,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7551184913246776567, guid: e1255fd0d6e467c4eb2530cdf518164b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7551184913246776567, guid: e1255fd0d6e467c4eb2530cdf518164b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -34.18
+      value: 8.66
       objectReference: {fileID: 0}
     - target: {fileID: 7551184913246776567, guid: e1255fd0d6e467c4eb2530cdf518164b, type: 3}
       propertyPath: m_LocalRotation.w

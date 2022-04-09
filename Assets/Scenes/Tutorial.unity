@@ -57713,6 +57713,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: AddTenSec
       objectReference: {fileID: 0}
+    - target: {fileID: 7299832869070315980, guid: e1255fd0d6e467c4eb2530cdf518164b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7551184913246776567, guid: e1255fd0d6e467c4eb2530cdf518164b, type: 3}
       propertyPath: m_RootOrder
       value: 3
