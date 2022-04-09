@@ -167,7 +167,7 @@ public class PlayerCollision : MonoBehaviour
 
         if (collision.collider.CompareTag("NoteLine")) {
             tutorial.PopIns(collision.collider.gameObject.name);
-            //Destroy(collision.collider.gameObject);
+            Destroy(collision.collider.gameObject);
         }
     }
 }

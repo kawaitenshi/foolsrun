@@ -31,11 +31,68 @@ public class Tutorial : MonoBehaviour
     }
 
     public void PopIns(string noteLine) {
-        //Debug.Log(noteLine);
+        Time.timeScale = 0.0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        NextButton.SetActive(true);
 
+        if (noteLine == "noteLine1") {
+            Note1.SetActive(true);
+        } else if (noteLine == "noteLine2") {
+            Note3.SetActive(true);
+        } else if (noteLine == "noteLine3") {
+            Note5.SetActive(true);
+        } else if (noteLine == "noteLine4") {
+            Note6.SetActive(true);
+        }
     }
 
     public void NextIns() {
 
+        if (Note1.activeSelf) {
+            Note1.SetActive(false);
+            Note2.SetActive(true);
+        
+        } else if (Note2.activeSelf) {
+            Note2.SetActive(false);
+            NextButton.SetActive(false);
+
+            Time.timeScale = 1.0f;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        
+        } else if (Note3.activeSelf) {
+            Note3.SetActive(false);
+            Note4.SetActive(true);
+
+        
+        } else if (Note4.activeSelf) {
+            Note4.SetActive(false);
+            NextButton.SetActive(false);
+
+            Time.timeScale = 1.0f;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        
+        } else if (Note5.activeSelf) {
+            Note5.SetActive(false);
+            NextButton.SetActive(false);
+        
+            Time.timeScale = 1.0f;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        
+        } else if (Note6.activeSelf) {
+            Note6.SetActive(false);
+            Note7.SetActive(true);
+
+        } else if (Note7.activeSelf) {
+            Note7.SetActive(false);
+            NextButton.SetActive(false);
+        
+            Time.timeScale = 1.0f;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 }

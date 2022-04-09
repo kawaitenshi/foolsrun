@@ -108,7 +108,6 @@ public class GameStatus : MonoBehaviour
         */
 
         timeCost += Time.deltaTime;
-        // Debug.Log(timeCost);
         DisplayTime(timeCost, "count up");
 
         // Check if player has reached end of the maze
@@ -167,10 +166,8 @@ public class GameStatus : MonoBehaviour
     public void deduceTime(float time) {
         if (timeCost - time >= 0f) {
             timeCost -= time;
-            Debug.Log("not 0");
         } else {
             timeCost = 0f;
-            Debug.Log("yes 0");
         }
     }
 
@@ -211,9 +208,8 @@ public class GameStatus : MonoBehaviour
     }
 
     public void ResumeGame() {
-        Time.timeScale = 1.0f;
-
         // lock and hide cursor
+        Time.timeScale = 1.0f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         

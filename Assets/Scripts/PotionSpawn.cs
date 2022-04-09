@@ -17,35 +17,32 @@ public class PotionSpawn : MonoBehaviour
 
     
 //     Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         _transform = GetComponent<Transform>();
         _origin = _transform.position;
     }
 
-    private bool isPlayerCollider(Collider collider)
-    {
+    private bool isPlayerCollider(Collider collider) {
         return collider.tag.Equals("Player");
     }
     
-    private void Update()
-    {
+    private void Update() {
         elapsed += Time.deltaTime;
         Collider[] hitColliders = Physics.OverlapSphere(_origin, DETECTION_RADIUS);
-        for (int i = 0; i < hitColliders.Length; i++)
-        {
-            if (isPlayerCollider(hitColliders[i]) && fell_already == false)
-            {
+        
+        for (int i = 0; i < hitColliders.Length; i++) {
+            if (isPlayerCollider(hitColliders[i]) && fell_already == false) {
                 position = new Vector3(0f, 10f, 0f);
                 position += gameObject.transform.position;
-                var potion = Instantiate(activePotion,
-                                           position,
-                                           Quaternion.identity);
+                var potion = Instantiate(activePotion, position, Quaternion.identity);
                 potion.transform.parent = gameObject.transform;
                 fell_already = true;
                 elapsed = 0f;
             }
         }
-        if (elapsed >= 5f) {fell_already = false;}
+
+        if (elapsed >= 5f) {
+            fell_already = false;
+        }
    }
 }
