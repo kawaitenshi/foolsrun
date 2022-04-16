@@ -44,6 +44,16 @@ public class GameStatus : MonoBehaviour
 
     public GameObject statObj;
     public Text statText;
+
+    // game score related
+    public GameObject gameScore;
+    private TextMeshProUGUI gameScoreText;
+    private int current_score;
+
+    // game score by level
+    private int after_first_lvl;
+    private int after_second_lvl;
+    private int after_third_lvl;
     
     // instructions for the game
     private Image beginningInstructionsImage;
@@ -55,14 +65,19 @@ public class GameStatus : MonoBehaviour
         // set up objects
         timeRemainingText = timeRemainingObj.GetComponent<Text>();
         timeRemainingClockContentsText = timeRemainingClockContents.GetComponent<TextMeshProUGUI>();
+        gameScoreText = gameScore.GetComponent<TextMeshProUGUI>();
         beginningInstructionsImage = beginningInstructionsMessage.GetComponent<Image>();
         timeRemainingText.text = "Time Remaining: " + timeLeft;
         statText = statObj.GetComponent<Text>();
+        current_score = 0;
         
         // setup timer
         timeRemainingClockContentsText.text = formatTime(timeLeft);
         slider.value = 1f;
         totalTime = timeLeft;
+
+        // setup game score
+        gameScoreText.text = formatScore(current_score);
 
         // lock and hide cursor
         Time.timeScale = 1.0f;
@@ -110,6 +125,8 @@ public class GameStatus : MonoBehaviour
         timeCost += Time.deltaTime;
         DisplayTime(timeCost, "count up");
 
+        DisplayScore();
+
         // Check if player has reached end of the maze
         for (int i=0; i<playerObj.transform.childCount; i++) {
             GameObject childObj = playerObj.transform.GetChild(i).gameObject;
@@ -139,6 +156,14 @@ public class GameStatus : MonoBehaviour
         return $"{padInt((int)(secondsLeft / 60))}:{padInt((int)(secondsLeft % 60))}";
     }
 
+    public void updateScoreGem() {
+        current_score += 500;
+    }
+
+    string formatScore(int current_score) {
+        return current_score.ToString();
+    }
+
     public string padInt(int time) {
         if (time < 10) {
             return $"0{time}";
@@ -153,6 +178,10 @@ public class GameStatus : MonoBehaviour
         } else if (mode == "count up") {
             timeRemainingClockContentsText.text = formatTime(time);
         }
+    }
+
+    void DisplayScore() {
+        gameScoreText.text = formatScore(current_score);
     }
 
     public void addTime(float time) {
@@ -193,8 +222,18 @@ public class GameStatus : MonoBehaviour
 
             Scene currentScene = SceneManager.GetActiveScene();
             string sceneName = currentScene.name;
+
+            if (sceneName == "Level 1.1") {
+                after_first_lvl = current_score;
+            }
+            else if (sceneName == "Level 1.2") {
+                after_second_lvl = current_score;
+            }
+            else if (sceneName == "Level 1.3") {
+                after_third_lvl = current_score;
+            }
             
-            if (sceneName != "Level 2") {
+            if (sceneName != "Level 1.3") {
                 LevelCleared.SetActive(true);
                 RestartButton.SetActive(true);
                 NextLevelButton.SetActive(true);
@@ -228,6 +267,15 @@ public class GameStatus : MonoBehaviour
     public void RestartGame() {
         Time.timeScale = 1.0f;
         winStat = false;
+
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName == "Level 1.1")
+        {current_score = 0;}
+        else if (sceneName == "Level 1.2")
+        {current_score = after_first_lvl;}
+        else if (sceneName == "Level 1.3")
+        {current_score = after_second_lvl;}
 
         // lock and hide cursor
         Cursor.lockState = CursorLockMode.Locked;
