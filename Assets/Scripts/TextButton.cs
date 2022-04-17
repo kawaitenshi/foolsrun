@@ -49,10 +49,33 @@ public class TextButton : MonoBehaviour, IPointerClickHandler
         if (sceneName == "Tutorial") {
             SceneManager.LoadScene("Level 1.1");
         } else if (sceneName == "Level 1.1") {
+            SceneManager.LoadScene("Level 1.1 cleared");
+        } else if (sceneName == "Level 1.1 cleared") {
             SceneManager.LoadScene("Level 1.2");
-        } else if (sceneName == "Level 1.2") {
+        }
+        else if (sceneName == "Level 1.2") {
+            SceneManager.LoadScene("Level 1.2 cleared");
+        }
+        else if (sceneName == "Level 1.2 cleared") {
             SceneManager.LoadScene("Level 1.3");
-        } else if (sceneName == "Level 1.3") {
+        }
+        else if (sceneName == "Level 1.3") {
+            SceneManager.LoadScene("Level 1.3 cleared");
+        }
+        else if (sceneName == "Level 1.3 cleared") {
+            SceneManager.LoadScene("Win");
+        }
+        else if (sceneName == "Win") {
+            GameControl.control.first_lvl_gems = 0;
+            GameControl.control.second_lvl_gems = 0;
+            GameControl.control.third_lvl_gems = 0;
+            GameControl.control.first_lvl_time = 0;
+            GameControl.control.second_lvl_time = 0;
+            GameControl.control.third_lvl_time = 0;
+            GameControl.control.first_lvl_score = 0;
+            GameControl.control.second_lvl_score = 0;
+            GameControl.control.third_lvl_score = 0;
+            GameControl.control.current_score = 0;
             SceneManager.LoadScene("MainMenu");
 //        } else if (sceneName == "Level 2") {
 //            SceneManager.LoadScene("MainMenu");

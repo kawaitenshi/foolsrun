@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -18,6 +19,19 @@ public class ScoreManager : MonoBehaviour
             scInfo.UpdateScoreImage(playerScore - 1);
         }
         GameControl.control.current_score += 1000;
+
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+
+        if (sceneName == "Level 1.1") {
+            GameControl.control.first_lvl_gems += 1;
+            }
+        else if (sceneName == "Level 1.2") {
+            GameControl.control.second_lvl_gems += 1;
+        }
+        else if (sceneName == "Level 1.3") {
+            GameControl.control.third_lvl_gems += 1;
+        }
         //scInfo.UpdateScoreText(playerScore);
     }
 
