@@ -44,6 +44,10 @@ public class GameStatus : MonoBehaviour
 
     public GameObject statObj;
     public Text statText;
+
+    // game score related
+    public GameObject gameScore;
+    private TextMeshProUGUI gameScoreText;
     
     // instructions for the game
     private Image beginningInstructionsImage;
@@ -88,6 +92,10 @@ public class GameStatus : MonoBehaviour
         } else {
             beginningInstructionsImage.gameObject.SetActive(false);
         }
+        if (sceneName == "Level 1.1") {GameControl.control.current_score = 0;}
+        gameScoreText = gameScore.GetComponent<TextMeshProUGUI>();
+        // setup game score
+        gameScoreText.text = formatScore(GameControl.control.current_score);
     }
 
     // Update is called once per frame
@@ -109,6 +117,8 @@ public class GameStatus : MonoBehaviour
 
         timeCost += Time.deltaTime;
         DisplayTime(timeCost, "count up");
+
+        DisplayScore();
 
         // Check if player has reached end of the maze
         for (int i=0; i<playerObj.transform.childCount; i++) {
@@ -171,6 +181,14 @@ public class GameStatus : MonoBehaviour
         }
     }
 
+    string formatScore(int current_score) {
+        return current_score.ToString();
+    }
+
+    void DisplayScore() {
+        gameScoreText.text = formatScore(GameControl.control.current_score);
+    }
+
     public void PauseGame(string type) {
         // unlock and unhide cursor
         Time.timeScale = 0.0f;
@@ -193,8 +211,18 @@ public class GameStatus : MonoBehaviour
 
             Scene currentScene = SceneManager.GetActiveScene();
             string sceneName = currentScene.name;
+
+            if (sceneName == "Level 1.1") {
+                GameControl.control.after_first_lvl = GameControl.control.current_score;
+            }
+            else if (sceneName == "Level 1.2") {
+                GameControl.control.after_second_lvl = GameControl.control.current_score;
+            }
+            else if (sceneName == "Level 1.3") {
+                GameControl.control.after_third_lvl = GameControl.control.current_score;
+            }
             
-            if (sceneName != "Level 2") {
+            if (sceneName != "Level 1.3") {
                 LevelCleared.SetActive(true);
                 RestartButton.SetActive(true);
                 NextLevelButton.SetActive(true);
@@ -228,6 +256,15 @@ public class GameStatus : MonoBehaviour
     public void RestartGame() {
         Time.timeScale = 1.0f;
         winStat = false;
+
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName == "Level 1.1")
+        {GameControl.control.current_score = 0;}
+        else if (sceneName == "Level 1.2")
+        {GameControl.control.current_score = GameControl.control.after_first_lvl;}
+        else if (sceneName == "Level 1.3")
+        {GameControl.control.current_score = GameControl.control.after_second_lvl;}
 
         // lock and hide cursor
         Cursor.lockState = CursorLockMode.Locked;

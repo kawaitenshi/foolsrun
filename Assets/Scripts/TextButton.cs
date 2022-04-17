@@ -53,9 +53,9 @@ public class TextButton : MonoBehaviour, IPointerClickHandler
         } else if (sceneName == "Level 1.2") {
             SceneManager.LoadScene("Level 1.3");
         } else if (sceneName == "Level 1.3") {
-            SceneManager.LoadScene("Level 2");
-        } else if (sceneName == "Level 2") {
             SceneManager.LoadScene("MainMenu");
+//        } else if (sceneName == "Level 2") {
+//            SceneManager.LoadScene("MainMenu");
         } else {
             Debug.Log("Scene loading error");
         }

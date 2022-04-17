@@ -17,6 +17,7 @@ public class ScoreManager : MonoBehaviour
         if (playerScore <= 6) {
             scInfo.UpdateScoreImage(playerScore - 1);
         }
+        GameControl.control.current_score += 1000;
         //scInfo.UpdateScoreText(playerScore);
     }
 
