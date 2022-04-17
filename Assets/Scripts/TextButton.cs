@@ -75,6 +75,7 @@ public class TextButton : MonoBehaviour, IPointerClickHandler
             GameControl.control.first_lvl_score = 0;
             GameControl.control.second_lvl_score = 0;
             GameControl.control.third_lvl_score = 0;
+            GameControl.control.current_score = 0;
             SceneManager.LoadScene("MainMenu");
 //        } else if (sceneName == "Level 2") {
 //            SceneManager.LoadScene("MainMenu");
