@@ -21065,8 +21065,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Size: {x: 1.0000001, y: 1.9344496, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: -0.032775115, z: -0.000000059604645}
 --- !u!1 &665210027
 GameObject:
   m_ObjectHideFlags: 0
@@ -35932,7 +35932,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerScore: 0
   scInfo: {fileID: 0}
-  gameStat: {fileID: 0}
 --- !u!4 &972110051
 Transform:
   m_ObjectHideFlags: 0
@@ -63830,8 +63829,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Size: {x: 1.0000001, y: 1.9509254, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: -0.02453736, z: -0.00000011920929}
 --- !u!1 &1709827597
 GameObject:
   m_ObjectHideFlags: 0
