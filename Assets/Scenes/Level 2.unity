@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -28437,7 +28437,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f60a4db2631a5d049b782f8cf78e13fe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2ab54ac275e01eb4dac50800afa349ad, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -29705,6 +29705,7 @@ MonoBehaviour:
   moveHuman: {fileID: 0}
   moveChicken: {fileID: 0}
   moveDragon: {fileID: 0}
+  instructions: {fileID: 0}
   gem_collect: {fileID: 8300000, guid: 9451216ea166f8c44a3e7fa8ff7e9248, type: 3}
   chicken_squawk: {fileID: 0}
   potion_hit: {fileID: 8300000, guid: d52bcf49353bf944ab53bd021c585311, type: 3}
@@ -32166,6 +32167,7 @@ MonoBehaviour:
   moveHuman: {fileID: 0}
   moveChicken: {fileID: 0}
   moveDragon: {fileID: 0}
+  instructions: {fileID: 0}
   gem_collect: {fileID: 8300000, guid: 9451216ea166f8c44a3e7fa8ff7e9248, type: 3}
   chicken_squawk: {fileID: 0}
   potion_hit: {fileID: 8300000, guid: d52bcf49353bf944ab53bd021c585311, type: 3}
@@ -42586,6 +42588,7 @@ MonoBehaviour:
   fill: {fileID: 1007515682}
   statObj: {fileID: 541186433}
   statText: {fileID: 0}
+  gameScore: {fileID: 0}
   beginningInstructionsMessage: {fileID: 1254953119}
 --- !u!4 &1976447160
 Transform:

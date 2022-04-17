@@ -92,7 +92,7 @@ public class GameStatus : MonoBehaviour
         } else {
             beginningInstructionsImage.gameObject.SetActive(false);
         }
-        if (sceneName == "Level 1.1") {GameControl.control.current_score = 0;}
+//        if (sceneName == "Level 1.1") {GameControl.control.current_score = 0;}
         gameScoreText = gameScore.GetComponent<TextMeshProUGUI>();
         // setup game score
         gameScoreText.text = formatScore(GameControl.control.current_score);
@@ -118,7 +118,10 @@ public class GameStatus : MonoBehaviour
         timeCost += Time.deltaTime;
         DisplayTime(timeCost, "count up");
 
-        DisplayScore();
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName != "Tutorial")
+        {DisplayScore();}
 
         // Check if player has reached end of the maze
         for (int i=0; i<playerObj.transform.childCount; i++) {
@@ -181,8 +184,8 @@ public class GameStatus : MonoBehaviour
         }
     }
 
-    string formatScore(int current_score) {
-        return current_score.ToString();
+    string formatScore(int score) {
+        return score.ToString();
     }
 
     void DisplayScore() {
@@ -213,25 +216,26 @@ public class GameStatus : MonoBehaviour
             string sceneName = currentScene.name;
 
             if (sceneName == "Level 1.1") {
-                GameControl.control.after_first_lvl = GameControl.control.current_score;
+                GameControl.control.first_lvl_time = timeCost;
             }
             else if (sceneName == "Level 1.2") {
-                GameControl.control.after_second_lvl = GameControl.control.current_score;
+                GameControl.control.second_lvl_time = timeCost;
             }
             else if (sceneName == "Level 1.3") {
-                GameControl.control.after_third_lvl = GameControl.control.current_score;
+                GameControl.control.third_lvl_time = timeCost;
             }
             
-            if (sceneName != "Level 1.3") {
+            if (sceneName == "Tutorial" || sceneName == "Level 1.1" || sceneName == "Level 1.2" || sceneName == "Level 1.3") {
                 LevelCleared.SetActive(true);
                 RestartButton.SetActive(true);
                 NextLevelButton.SetActive(true);
-            
-            } else {
-                YouWin.SetActive(true);
-                RestartButton.SetActive(true);
-                MainMenuButton.SetActive(true);
             }
+
+//            else {
+//                YouWin.SetActive(true);
+//                RestartButton.SetActive(true);
+//                MainMenuButton.SetActive(true);
+//            }
         }
     }
 
@@ -260,11 +264,17 @@ public class GameStatus : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
         if (sceneName == "Level 1.1")
-        {GameControl.control.current_score = 0;}
+        {GameControl.control.current_score = 0;
+        GameControl.control.first_lvl_gems = 0;
+        }
         else if (sceneName == "Level 1.2")
-        {GameControl.control.current_score = GameControl.control.after_first_lvl;}
+        {GameControl.control.current_score = GameControl.control.first_lvl_score;
+        GameControl.control.second_lvl_gems = 0;
+        }
         else if (sceneName == "Level 1.3")
-        {GameControl.control.current_score = GameControl.control.after_second_lvl;}
+        {GameControl.control.current_score = GameControl.control.first_lvl_score + GameControl.control.second_lvl_score;
+        GameControl.control.third_lvl_gems = 0;
+        }
 
         // lock and hide cursor
         Cursor.lockState = CursorLockMode.Locked;
@@ -295,8 +305,8 @@ public class GameStatus : MonoBehaviour
             textArea.text = "Resume";
         } else if (message == "Level Cleared!") {
             textArea.text = "Level Cleared!";
-        } else if (message == "Next Level") {
-            textArea.text = "Next Level";
+        } else if (message == "Next") {
+            textArea.text = "Next";
         } else if (message == "You Win!") {
             textArea.text = "You Win!";
         } else if (message == "End") {

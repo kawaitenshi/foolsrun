@@ -9,10 +9,20 @@ public class GameControl : MonoBehaviour
 {
     public static GameControl control;
 
+    // gems per level
+    public int first_lvl_gems;
+    public int second_lvl_gems;
+    public int third_lvl_gems;
+
+    // game time by level
+    public float first_lvl_time;
+    public float second_lvl_time;
+    public float third_lvl_time;
+
     // game score by level
-    public int after_first_lvl;
-    public int after_second_lvl;
-    public int after_third_lvl;
+    public int first_lvl_score;
+    public int second_lvl_score;
+    public int third_lvl_score;
 
     public int current_score;
     // Start is called before the first frame update
