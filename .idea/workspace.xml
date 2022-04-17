@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameStatus.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScoreManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScoreManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TextButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TextButton.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
