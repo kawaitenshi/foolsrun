@@ -47,6 +47,7 @@ public class TextButton : MonoBehaviour, IPointerClickHandler
         string sceneName = currentScene.name;
         
         if (sceneName == "Tutorial") {
+            GameControl.control.current_score = 0;
             SceneManager.LoadScene("Level 1.1");
         } else if (sceneName == "Level 1.1") {
             SceneManager.LoadScene("Level 1.1 cleared");
