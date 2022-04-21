@@ -40,6 +40,7 @@ public class TimeBonusScore : MonoBehaviour
 
         if (sceneName == "Level 1.1 cleared") {
             timeBonus = maxTimeBonus - (int)(GameControl.control.first_lvl_time/10 * 500);
+
             if (timeBonus < 0) timeBonus = 0;
             if (timeBonus > 6667) numStars = 3;
             else if (timeBonus > 3334) numStars = 2;
@@ -53,24 +54,28 @@ public class TimeBonusScore : MonoBehaviour
         }
         else if (sceneName == "Level 1.2 cleared") {
             timeBonus = maxTimeBonus - (int)(GameControl.control.second_lvl_time/10 * 500);
+
             if (timeBonus < 0) timeBonus = 0;
             if (timeBonus > 6667) numStars = 3;
             else if (timeBonus > 3334) numStars = 2;
             else numStars = 1;
             for (int star = 0; star < numStars; star++)
               stars[star].GetComponent<RawImage>().texture = fullStarImage;
+
             GameControl.control.current_score += timeBonus;
             GameControl.control.second_lvl_score = GameControl.control.second_lvl_gems * 1000 + timeBonus;
             scoreText.text = "Score: " + formatScore(GameControl.control.current_score);
         }
         else if (sceneName == "Level 1.3 cleared") {
             timeBonus = maxTimeBonus - (int)(GameControl.control.third_lvl_time/10 * 500);
+
             if (timeBonus < 0) timeBonus = 0;
             if (timeBonus > 6667) numStars = 3;
             else if (timeBonus > 3334) numStars = 2;
             else numStars = 1;
             for (int star = 0; star < numStars; star++)
               stars[star].GetComponent<RawImage>().texture = fullStarImage;
+
             GameControl.control.current_score += timeBonus;
             GameControl.control.third_lvl_score = GameControl.control.third_lvl_gems * 1000 + timeBonus;
             scoreText.text = "Score: " + formatScore(GameControl.control.current_score);
