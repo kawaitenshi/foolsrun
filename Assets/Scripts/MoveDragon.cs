@@ -45,6 +45,7 @@ public class MoveDragon : MonoBehaviour
     bool jumping;
     bool sprinting;
     bool hasFallen;
+    bool hasJumped;
 
     void Start() {
         DragonRigidbody = GetComponent<Rigidbody>();
@@ -78,10 +79,10 @@ public class MoveDragon : MonoBehaviour
 
         // perform animations
         Animator.SetBool("isWalking", movingForward && !hasFallen);
-        Animator.SetBool("isFlying", !isGrounded && !hasFallen);
+        Animator.SetBool("isFlying", !isGrounded && !hasFallen && hasJumped);
         Animator.SetBool("isGrounded", isGrounded && !hasFallen);
         Animator.SetBool("isRunning", sprinting && !hasFallen);
-        Animator.SetBool("isIdle", !movingForward && isGrounded && !hasFallen);
+        Animator.SetBool("isIdle", !movingForward && !hasJumped && !hasFallen);
         Animator.SetBool("fallen", hasFallen);
 
         if (!hasFallen) {
@@ -162,6 +163,7 @@ public class MoveDragon : MonoBehaviour
             //GetComponent<AudioSource>().clip = DragonJump;
             //GetComponent<AudioSource>().Play();
             DragonRigidbody.velocity = Vector3.up * jumpScale;
+            hasJumped = true;
         }
     }
 
@@ -175,6 +177,7 @@ public class MoveDragon : MonoBehaviour
      the player is on some sort of ground */
     private bool IsGrounded() {
         bool hitGround = Physics.Raycast(DragonTransform.position, Vector3.down, 0.5f);
+        if (hitGround) {hasJumped = false;}
         return hitGround;
     }
 
