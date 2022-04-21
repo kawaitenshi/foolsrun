@@ -18,7 +18,7 @@ public class TimeBonusScore : MonoBehaviour
     public Texture fullStarImage;
 
     // Number of stars player received
-    private int numStars = 0;
+    private int numStars = 1;
 
     // Hold the stars
     public GameObject [] stars;
@@ -41,22 +41,19 @@ public class TimeBonusScore : MonoBehaviour
         string sceneName = currentScene.name;
 
         if (sceneName == "Level 1.1 cleared") {
-            if (fls > 12667) {numStars = 3;}
-            else if (fls > 9333) {numStars = 2;}
-            else if (fls > 6000) {numStars = 1;}
-            else {numStars = 0;}}
+            if (fls > 11000) {numStars = 3;}
+            else if (fls > 6000) {numStars = 2;}
+            else {numStars = 1;}}
 
         if (sceneName == "Level 1.2 cleared") {
-            if (sls > 12667) {numStars = 3;}
-            else if (sls > 9333) {numStars = 2;}
-            else if (sls > 6000) {numStars = 1;}
-            else numStars = 0;}
+            if (sls > 11000) {numStars = 3;}
+            else if (sls > 6000) {numStars = 2;}
+            else numStars = 1;}
 
         if (sceneName == "Level 1.3 cleared") {
-            if (tls > 12667) {numStars = 3;}
-            else if (tls > 9333) {numStars = 2;}
-            else if (tls > 6000) {numStars = 1;}
-            else numStars = 0;}
+            if (tls > 11000) {numStars = 3;}
+            else if (tls > 6000) {numStars = 2;}
+            else numStars = 1;}
 
         for (int star = 0; star < numStars; star++)
             stars[star].GetComponent<RawImage>().texture = fullStarImage;
