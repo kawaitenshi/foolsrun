@@ -31,6 +31,7 @@ public class TimeBonusScore : MonoBehaviour
 
         if (sceneName == "Level 1.1 cleared") {
             timeBonus = maxTimeBonus - (int)(GameControl.control.first_lvl_time/10 * 500);
+            if (timeBonus < 0) {timeBonus = 0;}
             timeBonusText.text = "Time Bonus: " + formatScore(timeBonus);
             GameControl.control.current_score += timeBonus;
             GameControl.control.first_lvl_score = GameControl.control.first_lvl_gems * 1000 + timeBonus;
@@ -38,6 +39,7 @@ public class TimeBonusScore : MonoBehaviour
         }
         else if (sceneName == "Level 1.2 cleared") {
             timeBonus = maxTimeBonus - (int)(GameControl.control.second_lvl_time/10 * 500);
+            if (timeBonus < 0) {timeBonus = 0;}
             timeBonusText.text = "Time Bonus: " + formatScore(timeBonus);
             GameControl.control.current_score += timeBonus;
             GameControl.control.second_lvl_score = GameControl.control.second_lvl_gems * 1000 + timeBonus;
@@ -45,6 +47,7 @@ public class TimeBonusScore : MonoBehaviour
         }
         else if (sceneName == "Level 1.3 cleared") {
             timeBonus = maxTimeBonus - (int)(GameControl.control.third_lvl_time/10 * 500);
+            if (timeBonus < 0) {timeBonus = 0;}
             timeBonusText.text = "Time Bonus: " + formatScore(timeBonus);
             GameControl.control.current_score += timeBonus;
             GameControl.control.third_lvl_score = GameControl.control.third_lvl_gems * 1000 + timeBonus;
