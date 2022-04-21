@@ -9,12 +9,10 @@ public class TimeBonusScore : MonoBehaviour
 {
     public GameObject NextLevelButton;
 
-    public GameObject timeBonusObj;
-    public Text timeBonusText;
+//    public GameObject timeBonusObj;
+//    public Text timeBonusText;
     public GameObject scoreObj;
     public Text scoreText;
-    private int maxTimeBonus = 10000;
-    private int timeBonus;
 
     // The images to use for the stars
     public Texture fullStarImage;
@@ -35,51 +33,36 @@ public class TimeBonusScore : MonoBehaviour
         // UI elements
 //        NextLevelButton.SetActive(true);
 
+        int fls = GameControl.control.first_lvl_score;
+        int sls = GameControl.control.second_lvl_score;
+        int tls = GameControl.control.third_lvl_score;
+
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
 
-        if (sceneName == "Level 1.1 cleared") {
-            timeBonus = maxTimeBonus - (int)(GameControl.control.first_lvl_time/10 * 500);
+        if (sceneName == "Level 1.1") {
+            if (fls > 12667) {numStars = 3;}
+            else if (fls > 9333) {numStars = 2;}
+            else if (fls > 6000) {numStars = 1;}
+            else {numStars = 0;}}
 
-            if (timeBonus < 0) timeBonus = 0;
-            if (timeBonus > 6667) numStars = 3;
-            else if (timeBonus > 3334) numStars = 2;
-            else numStars = 1;
-            for (int star = 0; star < numStars; star++)
-              stars[star].GetComponent<RawImage>().texture = fullStarImage;
+        if (sceneName == "Level 1.2") {
+            if (sls > 12667) {numStars = 3;}
+            else if (sls > 9333) {numStars = 2;}
+            else if (sls > 6000) {numStars = 1;}
+            else numStars = 0;}
 
-            GameControl.control.current_score += timeBonus;
-            GameControl.control.first_lvl_score = GameControl.control.first_lvl_gems * 1000 + timeBonus;
+        if (sceneName == "Level 1.3") {
+            if (tls > 12667) {numStars = 3;}
+            else if (tls > 9333) {numStars = 2;}
+            else if (tls > 6000) {numStars = 1;}
+            else numStars = 0;}
+
+        for (int star = 0; star < numStars; star++)
+            stars[star].GetComponent<RawImage>().texture = fullStarImage;
+
             scoreText.text = "Score: " + formatScore(GameControl.control.current_score);
-        }
-        else if (sceneName == "Level 1.2 cleared") {
-            timeBonus = maxTimeBonus - (int)(GameControl.control.second_lvl_time/10 * 500);
 
-            if (timeBonus < 0) timeBonus = 0;
-            if (timeBonus > 6667) numStars = 3;
-            else if (timeBonus > 3334) numStars = 2;
-            else numStars = 1;
-            for (int star = 0; star < numStars; star++)
-              stars[star].GetComponent<RawImage>().texture = fullStarImage;
-
-            GameControl.control.current_score += timeBonus;
-            GameControl.control.second_lvl_score = GameControl.control.second_lvl_gems * 1000 + timeBonus;
-            scoreText.text = "Score: " + formatScore(GameControl.control.current_score);
-        }
-        else if (sceneName == "Level 1.3 cleared") {
-            timeBonus = maxTimeBonus - (int)(GameControl.control.third_lvl_time/10 * 500);
-
-            if (timeBonus < 0) timeBonus = 0;
-            if (timeBonus > 6667) numStars = 3;
-            else if (timeBonus > 3334) numStars = 2;
-            else numStars = 1;
-            for (int star = 0; star < numStars; star++)
-              stars[star].GetComponent<RawImage>().texture = fullStarImage;
-
-            GameControl.control.current_score += timeBonus;
-            GameControl.control.third_lvl_score = GameControl.control.third_lvl_gems * 1000 + timeBonus;
-            scoreText.text = "Score: " + formatScore(GameControl.control.current_score);
-        }
 
 //        timeBonusObj.SetActive(true);
 //        scoreObj.SetActive(true);

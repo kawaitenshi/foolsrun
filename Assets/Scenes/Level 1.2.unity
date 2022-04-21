@@ -25839,7 +25839,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Time cost: 00:00'
+  m_Text: 'Time Bonus: 0'
 --- !u!222 &402732196
 CanvasRenderer:
   m_ObjectHideFlags: 0
