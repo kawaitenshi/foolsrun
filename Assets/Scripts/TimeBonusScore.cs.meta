@@ -3,7 +3,13 @@ guid: 3bfcb9ba469fe3e4dbe9a4743d9de1b8
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - NextLevelButton: {instanceID: 0}
+  - timeBonusObj: {instanceID: 0}
+  - timeBonusText: {instanceID: 0}
+  - scoreObj: {instanceID: 0}
+  - scoreText: {instanceID: 0}
+  - fullStarImage: {fileID: 2800000, guid: 615d989248328914e8b6432acf7abe48, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
