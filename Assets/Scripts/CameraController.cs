@@ -15,8 +15,8 @@ public class CameraController : MonoBehaviour
     public float smoothFactor = 0.5f;
 
     // multiplier for camera rotation
-    public float rotateSpeedH = 2.0f;
-    public float rotateSpeedV = 2.0f;
+    public float rotateSpeedH = 1.0f;
+    public float rotateSpeedV = 1.0f;
 
     // camera rotaion angle limit
     private float minAngle = 20.0f;
