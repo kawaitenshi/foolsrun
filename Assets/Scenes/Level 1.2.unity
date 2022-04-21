@@ -76862,6 +76862,10 @@ PrefabInstance:
       propertyPath: MainCamera
       value: 
       objectReference: {fileID: 669742303}
+    - target: {fileID: 4237284608023826175, guid: 044601ad17ed3c94485e0e126dada4cf, type: 3}
+      propertyPath: chicken_jump_sound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6bb16299e1dcfc74c99a34e8f692a161, type: 3}
     - target: {fileID: 4237284608335890694, guid: 044601ad17ed3c94485e0e126dada4cf, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.26
