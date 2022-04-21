@@ -48,6 +48,11 @@ public class GameStatus : MonoBehaviour
     // game score related
     public GameObject gameScore;
     private TextMeshProUGUI gameScoreText;
+
+    private int timeBonus;
+    private int maxTimeBonus = 10000;
+
+    private bool already_updated_score = false;
     
     // instructions for the game
     private Image beginningInstructionsImage;
@@ -209,26 +214,37 @@ public class GameStatus : MonoBehaviour
             MainMenuButton.SetActive(true);
         
         } else if (type == "win") {
-            statText.text = "Time cost: " + formatTime(timeCost);
+            if (!already_updated_score) {
+            timeBonus = maxTimeBonus - (int)(timeCost/10 * 500);
+            if (timeBonus < 0) timeBonus = 0;
+
+            statText.text = "Time Bonus: " + formatScore(timeBonus);
             statObj.SetActive(true);
+
+            GameControl.control.current_score += timeBonus;
 
             Scene currentScene = SceneManager.GetActiveScene();
             string sceneName = currentScene.name;
 
             if (sceneName == "Level 1.1") {
                 GameControl.control.first_lvl_time = timeCost;
+                GameControl.control.first_lvl_score = GameControl.control.first_lvl_gems * 1000 + timeBonus;
             }
             else if (sceneName == "Level 1.2") {
                 GameControl.control.second_lvl_time = timeCost;
+                GameControl.control.second_lvl_score = GameControl.control.second_lvl_gems * 1000 + timeBonus;
             }
             else if (sceneName == "Level 1.3") {
                 GameControl.control.third_lvl_time = timeCost;
+                GameControl.control.third_lvl_score = GameControl.control.third_lvl_gems * 1000 + timeBonus;
             }
             
             if (sceneName == "Tutorial" || sceneName == "Level 1.1" || sceneName == "Level 1.2" || sceneName == "Level 1.3") {
                 LevelCleared.SetActive(true);
                 RestartButton.SetActive(true);
                 NextLevelButton.SetActive(true);
+            }
+            already_updated_score = true;
             }
 
 //            else {

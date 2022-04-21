@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -25839,7 +25839,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Time cost: 00:00'
+  m_Text: 'Time Bonus: 0'
 --- !u!222 &402732196
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -76862,6 +76862,10 @@ PrefabInstance:
       propertyPath: MainCamera
       value: 
       objectReference: {fileID: 669742303}
+    - target: {fileID: 4237284608023826175, guid: 044601ad17ed3c94485e0e126dada4cf, type: 3}
+      propertyPath: chicken_jump_sound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6bb16299e1dcfc74c99a34e8f692a161, type: 3}
     - target: {fileID: 4237284608335890694, guid: 044601ad17ed3c94485e0e126dada4cf, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.26
@@ -127237,7 +127241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   humanObs: {fileID: 8300000, guid: 4022b9510ed76c34e9978221e1d60b4b, type: 3}
-  humanJump: {fileID: 8300000, guid: 5c66a193800fe4046ba18d745923ae45, type: 3}
+  humanJump: {fileID: 8300000, guid: a83e358a195a9c14795981b83569df9f, type: 3}
   MainCamera: {fileID: 669742303}
   CameraTransform: {fileID: 0}
   PlatformLayerMask:
