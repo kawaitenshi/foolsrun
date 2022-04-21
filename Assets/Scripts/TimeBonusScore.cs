@@ -40,7 +40,7 @@ public class TimeBonusScore : MonoBehaviour
 
         if (sceneName == "Level 1.1 cleared") {
             timeBonus = maxTimeBonus - (int)(GameControl.control.first_lvl_time/10 * 500);
-            //timeBonusText.text = "Time Bonus: " + formatScore(timeBonus);
+            if (timeBonus < 0) timeBonus = 0;
             if (timeBonus > 6667) numStars = 3;
             else if (timeBonus > 3334) numStars = 2;
             else numStars = 1;
@@ -53,6 +53,7 @@ public class TimeBonusScore : MonoBehaviour
         }
         else if (sceneName == "Level 1.2 cleared") {
             timeBonus = maxTimeBonus - (int)(GameControl.control.second_lvl_time/10 * 500);
+            if (timeBonus < 0) timeBonus = 0;
             if (timeBonus > 6667) numStars = 3;
             else if (timeBonus > 3334) numStars = 2;
             else numStars = 1;
@@ -64,6 +65,7 @@ public class TimeBonusScore : MonoBehaviour
         }
         else if (sceneName == "Level 1.3 cleared") {
             timeBonus = maxTimeBonus - (int)(GameControl.control.third_lvl_time/10 * 500);
+            if (timeBonus < 0) timeBonus = 0;
             if (timeBonus > 6667) numStars = 3;
             else if (timeBonus > 3334) numStars = 2;
             else numStars = 1;
