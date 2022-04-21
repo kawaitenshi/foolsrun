@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -127237,7 +127237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   humanObs: {fileID: 8300000, guid: 4022b9510ed76c34e9978221e1d60b4b, type: 3}
-  humanJump: {fileID: 8300000, guid: 5c66a193800fe4046ba18d745923ae45, type: 3}
+  humanJump: {fileID: 8300000, guid: a83e358a195a9c14795981b83569df9f, type: 3}
   MainCamera: {fileID: 669742303}
   CameraTransform: {fileID: 0}
   PlatformLayerMask:
