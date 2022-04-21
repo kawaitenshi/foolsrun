@@ -41,17 +41,17 @@ public class TimeBonusScore : MonoBehaviour
         string sceneName = currentScene.name;
 
         if (sceneName == "Level 1.1 cleared") {
-            if (fls > 11000) {numStars = 3;}
+            if (fls >= 11000) {numStars = 3;}
             else if (fls > 6000) {numStars = 2;}
             else {numStars = 1;}}
 
         if (sceneName == "Level 1.2 cleared") {
-            if (sls > 11000) {numStars = 3;}
+            if (sls >= 11000) {numStars = 3;}
             else if (sls > 6000) {numStars = 2;}
             else numStars = 1;}
 
         if (sceneName == "Level 1.3 cleared") {
-            if (tls > 11000) {numStars = 3;}
+            if (tls >= 11000) {numStars = 3;}
             else if (tls > 6000) {numStars = 2;}
             else numStars = 1;}
 
