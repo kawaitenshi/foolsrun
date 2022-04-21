@@ -1,0 +1,12 @@
+[0418/153234.047:ERROR:mojo_audio_output_ipc.cc(187)] MojoAudioOutputIPC failed to acquire factory
+[0418/153234.051:ERROR:mojo_audio_output_ipc.cc(187)] MojoAudioOutputIPC failed to acquire factory
+[0418/153234.055:ERROR:mojo_audio_output_ipc.cc(187)] MojoAudioOutputIPC failed to acquire factory
+[0418/153234.055:ERROR:mojo_audio_output_ipc.cc(187)] MojoAudioOutputIPC failed to acquire factory
+[0418/153234.057:ERROR:mojo_audio_output_ipc.cc(187)] MojoAudioOutputIPC failed to acquire factory
+[0418/153234.057:ERROR:mojo_audio_output_ipc.cc(187)] MojoAudioOutputIPC failed to acquire factory
+[0418/153234.063:ERROR:mojo_audio_output_ipc.cc(187)] MojoAudioOutputIPC failed to acquire factory
+[0418/153234.087:ERROR:mojo_audio_output_ipc.cc(187)] MojoAudioOutputIPC failed to acquire factory
+[0418/153234.087:ERROR:mojo_audio_output_ipc.cc(187)] MojoAudioOutputIPC failed to acquire factory
+[0418/153234.088:ERROR:mojo_audio_output_ipc.cc(187)] MojoAudioOutputIPC failed to acquire factory
+[0418/153234.180:WARNING:ipc_message_attachment_set.cc(49)] MessageAttachmentSet destroyed with unconsumed attachments: 0/1
+[0418/153234.180:ERROR:command_buffer_proxy_impl.cc(122)] ContextResult::kTransientFailure: Failed to send GpuChannelMsg_CreateCommandBuffer.
